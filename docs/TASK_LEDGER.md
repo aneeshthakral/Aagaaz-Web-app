@@ -304,3 +304,24 @@ This architecture creates a luxury hospitality website that puts the three reven
 | P8-04 | Remove console statements from production forms | Claude Code | DONE | | Removed console.log from 4 enquiry form components |
 | P8-05 | Add missing React keys to map operations | Claude Code | DONE | | Audited all map operations - keys already present, no fixes needed |
 | P8-06 | Verify production build is clean | Claude Code | DONE | | Build successful: zero errors, zero warnings, 19 pages generated |
+| P8-07 | Fix runtime bugs on localhost site | Claude Code | DONE | | Fixed Apple touch icon 404 errors and Lightbox duplicate export error |
+
+## RUNTIME BUG FIXES (Claude Code)
+
+**Issues Identified & Resolved:**
+1. **Apple Touch Icon 404 Errors**: iOS devices requesting `/apple-touch-icon.png` were getting 404 responses
+   - **Fix**: Created dynamic Apple icon generator at `app/apple-icon.js` 
+   - **Result**: Now returns proper PNG icon with Aagaaz branding
+
+2. **Lightbox Component Module Parse Error**: Duplicate export 'default' causing compilation failure
+   - **Fix**: Removed duplicate export statement while preserving existing function export
+   - **Result**: Gallery page now compiles and loads without errors
+
+**Verification:**
+- ✅ All pages return 200 status codes (/, /contact, /rooms, /banquet, /kitty-parties, etc.)
+- ✅ Apple icon endpoint working (`/apple-icon` returns proper PNG)
+- ✅ No compilation errors in dev server logs
+- ✅ All forms and navigation functional
+- ✅ No JavaScript runtime errors
+
+**Dev Server Status:** Running clean at http://localhost:3000 with zero errors
