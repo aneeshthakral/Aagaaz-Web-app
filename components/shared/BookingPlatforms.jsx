@@ -6,29 +6,28 @@
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export function BookingPlatforms({ className = '', showTitle = true }) {
-  // Placeholder links - to be replaced with real booking platform URLs
-  const platforms = [
-    {
-      name: 'Booking.com',
-      url: 'https://booking.com/placeholder-aagaaz-hotel',
-      logo: 'B.com',
-      color: 'bg-[#003580] hover:bg-[#002147] text-white'
-    },
-    {
-      name: 'MakeMyTrip',
-      url: 'https://makemytrip.com/placeholder-aagaaz-hotel',
-      logo: 'MMT',
-      color: 'bg-[#FF6B2C] hover:bg-[#E55A25] text-white'
-    },
-    {
-      name: 'Goibibo',
-      url: 'https://goibibo.com/placeholder-aagaaz-hotel',
-      logo: 'Goibibo',
-      color: 'bg-[#EF6614] hover:bg-[#D55512] text-white'
-    }
-  ];
+const platforms = [
+  {
+    name: 'Booking.com',
+    url: 'https://www.booking.com/searchresults.html?ss=Aagaaz%2C+Ludhiana',
+    logo: 'B.com',
+    color: 'bg-[#003580] hover:bg-[#002147] text-white'
+  },
+  {
+    name: 'MakeMyTrip',
+    url: 'https://www.makemytrip.com/hotels/hotel_aagaaz_for_luxury_stay_celebration-details-ludhiana.html',
+    logo: 'MMT',
+    color: 'bg-[#FF6B2C] hover:bg-[#E55A25] text-white'
+  },
+  {
+    name: 'Goibibo',
+    url: 'https://www.goibibo.com/hotels/aagaaz-for-luxury-stay-celebration-hotel-in-ludhiana-5495347842795969158/',
+    logo: 'Goibibo',
+    color: 'bg-[#EF6614] hover:bg-[#D55512] text-white'
+  }
+];
 
+export function BookingPlatforms({ className = '', showTitle = true }) {
   return (
     <div className={`bg-surface-subtle border border-border rounded-lg p-6 ${className}`}>
       {showTitle && (
@@ -80,22 +79,6 @@ export function BookingPlatformsCompact({ className = '' }) {
 }
 
 export function BookingPlatformsInline({ className = '' }) {
-  // Placeholder links - to be replaced with real booking platform URLs
-  const platforms = [
-    {
-      name: 'Booking.com',
-      url: 'https://booking.com/placeholder-aagaaz-hotel'
-    },
-    {
-      name: 'MakeMyTrip',
-      url: 'https://makemytrip.com/placeholder-aagaaz-hotel'
-    },
-    {
-      name: 'Goibibo',
-      url: 'https://goibibo.com/placeholder-aagaaz-hotel'
-    }
-  ];
-
   return (
     <div className={`flex flex-wrap items-center gap-3 text-sm ${className}`}>
       <span className="text-text-light">Also on:</span>

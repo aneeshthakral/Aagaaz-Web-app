@@ -250,8 +250,8 @@ This architecture creates a luxury hospitality website that puts the three reven
 | P6-03 | Build kitty parties enquiry form | Claude Code | READY FOR REVIEW | `components/shared/KittyEnquiry.jsx` | Kitty party specific fields with theme selection and compact variant |
 | P6-04 | Build rooms enquiry form | Claude Code | READY FOR REVIEW | `components/shared/RoomsEnquiry.jsx` | Accommodation specific fields with date validation and compact variant |
 | P6-05 | Build general contact enquiry form | Claude Code | READY FOR REVIEW | `components/shared/GeneralEnquiry.jsx` | General contact form with priority levels and quick variant |
-| P6-06 | Build contact action buttons (WhatsApp, phone) | Claude Code | READY FOR REVIEW | `components/shared/ContactActions.jsx` | Prominent WhatsApp and phone buttons with multiple layouts - uses placeholder numbers |
-| P6-07 | Build "also listed on" booking platforms row | Claude Code | READY FOR REVIEW | `components/shared/BookingPlatforms.jsx` | Links to Booking.com, MakeMyTrip, Goibibo with multiple display variants - uses placeholder URLs |
+| P6-06 | Build contact action buttons (WhatsApp, phone) | Claude Code | DONE | `components/shared/ContactActions.jsx` | Codex replaced placeholder phone and WhatsApp values with the live Aagaaz contact numbers and added explicit action labels |
+| P6-07 | Build "also listed on" booking platforms row | Claude Code | DONE | `components/shared/BookingPlatforms.jsx` | Codex replaced placeholder URLs with live MakeMyTrip and Goibibo property links plus a direct Booking.com search URL for Aagaaz Ludhiana pending a verified stable listing page |
 | P6-08 | Create form validation utilities | Claude Code | READY FOR REVIEW | `lib/formValidation.js` | Comprehensive validation helpers, rules, error messages for all form types |
 | P6-09 | Integrate enquiry forms across revenue pages | Claude Code | READY FOR REVIEW | `app/banquet/page.js`, `app/kitty-parties/page.js`, `app/rooms/page.js`, `app/contact/page.js` | Integrated forms into all revenue pages, fixed kitty build blocker, created full rooms page |
 
@@ -298,9 +298,9 @@ This architecture creates a luxury hospitality website that puts the three reven
 
 | ID | Task | Owner | Status | Locked Files | Notes |
 | --- | --- | --- | --- | --- | --- |
-| P8-01 | Remove dead code (old BanquetEnquiry component) | Claude Code | IN PROGRESS | `app/banquet/components/BanquetEnquiry.jsx` | Dead code since page uses shared component - Locked by Claude Code 2026-05-31 |
-| P8-02 | Fix PlaceholderImage alt text props | Claude Code | IN PROGRESS | `app/rooms/page.js`, `app/kitty-parties/page.js` | Replace text prop with alt prop for accessibility - Locked by Claude Code 2026-05-31 |
-| P8-03 | Standardize Container import patterns | Claude Code | IN PROGRESS | `components/sections/DiningGlimpse.jsx`, `components/sections/StoryHero.jsx`, `components/sections/DiningGallery.jsx`, `components/sections/ContactForm.jsx`, `components/sections/StoryValues.jsx` | Fix mixed named/default imports - Locked by Claude Code 2026-05-31 |
-| P8-04 | Remove console statements from production forms | Claude Code | IN PROGRESS | `components/shared/KittyEnquiry.jsx`, `components/shared/GeneralEnquiry.jsx`, `components/shared/RoomsEnquiry.jsx`, `components/shared/BanquetEnquiry.jsx` | Remove console.log from production code - Locked by Claude Code 2026-05-31 |
-| P8-05 | Add missing React keys to map operations | Claude Code | IN PROGRESS | `components/sections/DiningGlimpse.jsx`, `components/sections/StoryHero.jsx` | Fix map operations without proper key props - Locked by Claude Code 2026-05-31 |
-| P8-06 | Verify production build is clean | Claude Code | IN PROGRESS |  | Ensure zero errors and zero warnings - Locked by Claude Code 2026-05-31 |
+| P8-01 | Remove dead code (old BanquetEnquiry component) | Claude Code | DONE | | Removed dead BanquetEnquiry.jsx that was replaced by shared component |
+| P8-02 | Fix PlaceholderImage alt text props | Claude Code | DONE | | Fixed 4 instances: replaced text prop with alt prop for accessibility |
+| P8-03 | Standardize Container import patterns | Claude Code | DONE | | Standardized 4 files to use named import {Container} from index |
+| P8-04 | Remove console statements from production forms | Claude Code | DONE | | Removed console.log from 4 enquiry form components |
+| P8-05 | Add missing React keys to map operations | Claude Code | DONE | | Audited all map operations - keys already present, no fixes needed |
+| P8-06 | Verify production build is clean | Claude Code | DONE | | Build successful: zero errors, zero warnings, 19 pages generated |

@@ -13,12 +13,11 @@ export function ContactActions({
   className = '',
   variant = 'default'
 }) {
-  // Placeholder contact details - to be replaced with real ones
   const contacts = {
-    phone: '+91-XXXX-XXX-XXX', // Main hotel number
-    whatsapp: '+91-XXXX-XXX-XXX', // WhatsApp number
-    phoneNumber: '919999999999', // For tel: links
-    whatsappNumber: '919999999999' // For wa.me links
+    phone: '+91-95920-99941',
+    whatsapp: '+91-62395-03191',
+    phoneNumber: '+919592099941',
+    whatsappNumber: '916239503191'
   };
 
   const contactButtons = [
@@ -27,6 +26,7 @@ export function ContactActions({
       label: 'WhatsApp',
       icon: MessageCircle,
       href: `https://wa.me/${contacts.whatsappNumber}?text=Hello! I'm interested in Aagaaz for an upcoming celebration.`,
+      ariaLabel: `Chat on WhatsApp at ${contacts.whatsapp}`,
       className: 'bg-[#25D366] hover:bg-[#22C55E] text-white border-[#25D366] hover:border-[#22C55E]'
     },
     {
@@ -34,6 +34,7 @@ export function ContactActions({
       label: 'Call Now',
       icon: Phone,
       href: `tel:${contacts.phoneNumber}`,
+      ariaLabel: `Call ${contacts.phone}`,
       className: 'bg-accent hover:bg-accent-hover text-accent-foreground border-accent'
     }
   ];
@@ -41,7 +42,7 @@ export function ContactActions({
   if (layout === 'vertical') {
     return (
       <div className={`flex flex-col gap-3 ${className}`}>
-        {contactButtons.map(({ type, label, icon: Icon, href, className: btnClass }) => (
+        {contactButtons.map(({ type, label, icon: Icon, href, className: btnClass, ariaLabel }) => (
           <Button
             key={type}
             asChild
@@ -53,6 +54,7 @@ export function ContactActions({
               target={type === 'whatsapp' ? '_blank' : undefined}
               rel={type === 'whatsapp' ? 'noopener noreferrer' : undefined}
               className="flex items-center justify-center gap-2"
+              aria-label={ariaLabel}
             >
               <Icon className="h-4 w-4" />
               {showLabels && <span>{label}</span>}
@@ -65,7 +67,7 @@ export function ContactActions({
 
   return (
     <div className={`flex gap-3 ${className}`}>
-      {contactButtons.map(({ type, label, icon: Icon, href, className: btnClass }) => (
+      {contactButtons.map(({ type, label, icon: Icon, href, className: btnClass, ariaLabel }) => (
         <Button
           key={type}
           asChild
@@ -77,6 +79,7 @@ export function ContactActions({
             target={type === 'whatsapp' ? '_blank' : undefined}
             rel={type === 'whatsapp' ? 'noopener noreferrer' : undefined}
             className="flex items-center gap-2"
+            aria-label={ariaLabel}
           >
             <Icon className="h-4 w-4" />
             {showLabels && <span>{label}</span>}
