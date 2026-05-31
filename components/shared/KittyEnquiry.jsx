@@ -154,7 +154,6 @@ export function KittyEnquiry({ className = '' }) {
   };
 
   const handleKittySubmit = async (formData) => {
-    console.log('Kitty party enquiry submitted:', formData);
     // TODO: Integrate with actual form submission service (Web3Forms, Resend, etc.)
 
     // For now, simulate API call

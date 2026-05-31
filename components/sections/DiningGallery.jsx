@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import Container from '@/components/layout/Container'
+import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 

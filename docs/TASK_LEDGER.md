@@ -293,3 +293,14 @@ This architecture creates a luxury hospitality website that puts the three reven
 - All forms use clearly marked placeholder contact numbers and booking URLs
 - Validation is production-ready
 - Form submission endpoints ready for Web3Forms or custom backend integration
+
+## PHASE 8 - CODE CLEANUP AND QUALITY FIXES (Claude Code)
+
+| ID | Task | Owner | Status | Locked Files | Notes |
+| --- | --- | --- | --- | --- | --- |
+| P8-01 | Remove dead code (old BanquetEnquiry component) | Claude Code | IN PROGRESS | `app/banquet/components/BanquetEnquiry.jsx` | Dead code since page uses shared component - Locked by Claude Code 2026-05-31 |
+| P8-02 | Fix PlaceholderImage alt text props | Claude Code | IN PROGRESS | `app/rooms/page.js`, `app/kitty-parties/page.js` | Replace text prop with alt prop for accessibility - Locked by Claude Code 2026-05-31 |
+| P8-03 | Standardize Container import patterns | Claude Code | IN PROGRESS | `components/sections/DiningGlimpse.jsx`, `components/sections/StoryHero.jsx`, `components/sections/DiningGallery.jsx`, `components/sections/ContactForm.jsx`, `components/sections/StoryValues.jsx` | Fix mixed named/default imports - Locked by Claude Code 2026-05-31 |
+| P8-04 | Remove console statements from production forms | Claude Code | IN PROGRESS | `components/shared/KittyEnquiry.jsx`, `components/shared/GeneralEnquiry.jsx`, `components/shared/RoomsEnquiry.jsx`, `components/shared/BanquetEnquiry.jsx` | Remove console.log from production code - Locked by Claude Code 2026-05-31 |
+| P8-05 | Add missing React keys to map operations | Claude Code | IN PROGRESS | `components/sections/DiningGlimpse.jsx`, `components/sections/StoryHero.jsx` | Fix map operations without proper key props - Locked by Claude Code 2026-05-31 |
+| P8-06 | Verify production build is clean | Claude Code | IN PROGRESS |  | Ensure zero errors and zero warnings - Locked by Claude Code 2026-05-31 |

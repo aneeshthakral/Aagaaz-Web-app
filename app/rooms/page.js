@@ -19,7 +19,7 @@ export default function RoomsPage() {
         <PlaceholderImage
           width={1920}
           height={1080}
-          text="Luxury Room Hero"
+          alt="Luxury Room Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
@@ -82,7 +82,7 @@ export default function RoomsPage() {
                 <PlaceholderImage
                   width={400}
                   height={250}
-                  text={room.type}
+                  alt={room.type}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -154,7 +154,7 @@ export default function RoomsPage() {
                 key={i}
                 width={300}
                 height={200}
-                text={`Room ${i}`}
+                alt={`Room ${i}`}
                 className="rounded-lg hover:scale-105 transition-transform duration-300"
               />
             ))}

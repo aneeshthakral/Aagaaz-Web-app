@@ -135,7 +135,6 @@ export function BanquetEnquiry({ className = '' }) {
   };
 
   const handleBanquetSubmit = async (formData) => {
-    console.log('Banquet enquiry submitted:', formData);
     // TODO: Integrate with actual form submission service (Web3Forms, Resend, etc.)
 
     // For now, simulate API call

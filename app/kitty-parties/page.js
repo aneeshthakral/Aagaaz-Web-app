@@ -39,7 +39,7 @@ export default function KittyPartiesPage() {
                 key={i}
                 width={400}
                 height={300}
-                text={`Kitty ${i}`}
+                alt={`Kitty ${i}`}
                 className="rounded-lg"
               />
             ))}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import Container from '@/components/layout/Container'
+import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/button'
 import { Calendar, Users, Star, Send } from 'lucide-react'
 

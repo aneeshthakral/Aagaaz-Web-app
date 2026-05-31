@@ -127,7 +127,6 @@ export function GeneralEnquiry({ className = '' }) {
   };
 
   const handleGeneralSubmit = async (formData) => {
-    console.log('General enquiry submitted:', formData);
     // TODO: Integrate with actual form submission service (Web3Forms, Resend, etc.)
 
     // For now, simulate API call

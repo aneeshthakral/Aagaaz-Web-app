@@ -160,7 +160,6 @@ export function RoomsEnquiry({ className = '' }) {
       throw new Error(dateRangeError);
     }
 
-    console.log('Room enquiry submitted:', formData);
     // TODO: Integrate with actual form submission service (Web3Forms, Resend, etc.)
 
     // For now, simulate API call
