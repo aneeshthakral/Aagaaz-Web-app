@@ -124,7 +124,7 @@ export function CTABand() {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 group px-8 py-6 text-lg font-medium"
             >
-              <Link href="/contact" className="flex items-center gap-2">
+              <Link href="/#enquire-now" className="flex items-center gap-2">
                 Plan Your Celebration
                 <ArrowRight className="h-5 w-5 transform transition-transform group-hover:translate-x-1" />
               </Link>

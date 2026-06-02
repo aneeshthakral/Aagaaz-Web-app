@@ -256,7 +256,7 @@ export default function ContactHero() {
                   size="lg"
                   className="bg-secondary hover:bg-secondary-light text-surface px-10 py-4 text-lg font-semibold shadow-2xl shadow-secondary/25"
                 >
-                  <a href="#enquiry">Send Detailed Enquiry</a>
+                  <a href="/#enquire-now">Send Detailed Enquiry</a>
                 </Button>
               </LuxuryHover>
             </div>

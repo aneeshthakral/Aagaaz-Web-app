@@ -163,7 +163,7 @@ export default function EventTypes() {
             Custom packages available for unique requirements and special occasions.
           </p>
           <Button asChild size="lg" className="bg-secondary hover:bg-secondary-light text-surface">
-            <Link href="/contact">Discuss Your Event</Link>
+            <Link href="/#enquire-now">Discuss Your Event</Link>
           </Button>
         </motion.div>
       </Container>

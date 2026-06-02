@@ -77,7 +77,7 @@ export function StoryTeaser() {
                 asChild
                 className="bg-accent text-accent-foreground hover:bg-accent/90"
               >
-                <Link href="/contact">Start Your Beginning</Link>
+                <Link href="/#enquire-now">Start Your Beginning</Link>
               </Button>
             </div>
           </motion.div>

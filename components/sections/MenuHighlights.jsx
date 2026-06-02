@@ -298,7 +298,7 @@ export default function MenuHighlights() {
                 size="lg"
                 className="bg-secondary hover:bg-secondary-light text-surface px-8 py-4 text-lg font-semibold shadow-2xl shadow-secondary/25"
               >
-                <Link href="/contact">Reserve Your Table</Link>
+                <Link href="/#enquire-now">Reserve Your Table</Link>
               </Button>
             </LuxuryHover>
 

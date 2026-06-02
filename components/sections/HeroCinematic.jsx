@@ -114,7 +114,7 @@ export function HeroCinematic() {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-lg font-medium"
             >
-              <Link href="/contact">Plan Your Celebration</Link>
+              <Link href="/#enquire-now">Plan Your Celebration</Link>
             </Button>
 
             <Button

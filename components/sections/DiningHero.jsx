@@ -142,7 +142,7 @@ export default function DiningHero() {
               transition={{ duration: 0.2 }}
             >
               <Button asChild size="lg" className="bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 text-lg font-semibold shadow-2xl shadow-accent/25">
-                <Link href="/contact">Reserve Your Table</Link>
+                <Link href="/#enquire-now">Reserve Your Table</Link>
               </Button>
             </motion.div>
             <motion.div

@@ -183,7 +183,7 @@ export default function CorporatePackages() {
                   asChild
                   className={`w-full ${pkg.popular ? 'bg-secondary hover:bg-secondary-light' : 'bg-accent hover:bg-accent-hover'}`}
                 >
-                  <Link href="/contact">Get Quote</Link>
+                  <Link href="/#enquire-now">Get Quote</Link>
                 </Button>
               </div>
             </motion.div>
@@ -205,7 +205,7 @@ export default function CorporatePackages() {
             requirements and timeline. Let us design the perfect experience for you.
           </p>
           <Button asChild variant="outline" size="lg" className="border-secondary text-secondary hover:bg-secondary/10">
-            <Link href="/contact">Discuss Custom Package</Link>
+            <Link href="/#enquire-now">Discuss Custom Package</Link>
           </Button>
         </motion.div>
       </Container>

@@ -203,7 +203,7 @@ export function KittyPackages() {
                         : 'bg-purple-600 text-white hover:bg-purple-700'
                     }`}
                   >
-                    <Link href="#enquiry">
+                    <Link href="/#enquire-now">
                       Book {pkg.name}
                     </Link>
                   </Button>
@@ -264,7 +264,7 @@ export function KittyPackages() {
               Need specific theme inclusions and decoration details for each package
             </p>
             <Button asChild variant="outline">
-              <Link href="#enquiry">
+              <Link href="/#enquire-now">
                 Discuss Custom Themes
               </Link>
             </Button>

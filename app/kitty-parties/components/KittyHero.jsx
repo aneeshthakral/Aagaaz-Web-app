@@ -111,7 +111,7 @@ export function KittyHero() {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 group px-8 py-6 text-lg font-medium"
             >
-              <Link href="#enquiry" className="flex items-center gap-2">
+              <Link href="/#enquire-now" className="flex items-center gap-2">
                 Plan Your Kitty Party
                 <Coffee className="h-5 w-5" />
               </Link>

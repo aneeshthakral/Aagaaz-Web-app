@@ -146,7 +146,7 @@ export function DiningGlimpse() {
               </Button>
 
               <Button asChild variant="outline">
-                <Link href="/contact">Reserve a Table</Link>
+                <Link href="/#enquire-now">Reserve a Table</Link>
               </Button>
             </div>
           </motion.div>

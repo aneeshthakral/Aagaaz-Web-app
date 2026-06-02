@@ -71,7 +71,7 @@ export default function ExperiencesHero() {
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-accent hover:bg-accent-hover text-accent-foreground">
-              <Link href="/contact">Plan Your Event</Link>
+              <Link href="/#enquire-now">Plan Your Event</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-cream/30 text-cream hover:bg-cream/10">
               <Link href="#event-types">Explore Options</Link>

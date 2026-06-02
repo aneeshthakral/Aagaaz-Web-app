@@ -215,7 +215,7 @@ export function BanquetPackages() {
                         : "bg-foreground text-background hover:bg-foreground/90"
                     }`}
                   >
-                    <Link href="#enquiry">Get Quote for {pkg.name}</Link>
+                    <Link href="/#enquire-now">Get Quote for {pkg.name}</Link>
                   </Button>
                 </div>
               </motion.div>
@@ -240,7 +240,7 @@ export function BanquetPackages() {
               that perfectly matches your vision and requirements.
             </p>
             <Button asChild variant="outline">
-              <Link href="#enquiry">Request Custom Quote</Link>
+              <Link href="/#enquire-now">Request Custom Quote</Link>
             </Button>
           </div>
         </motion.div>

@@ -513,6 +513,20 @@ Based on analysis of Menu.pdf, current implementation state, and 6 targeted impr
 | FP-03 | Content accuracy review for story/family narrative and menu showcase | Claude Code | DONE | Story and dining components | Content accuracy confirmed - timeline and menu align with source materials |
 | FP-90 | Review final polish changes | Codex | TODO | All locked files from FP-01 through FP-03 | Validate final polish and content accuracy |
 
+## CRITICAL ENQUIRY PATH FIXES (Claude Code - June 2, 2026)
+
+**🚨 FIXING BLOCKERS AND CRITICAL ISSUES BEFORE LAUNCH**
+
+| ID | Task | Owner | Status | Locked Files | Notes |
+| --- | --- | --- | --- | --- | --- |
+| AUDIT-FIX-01 | Fix broken #enquiry CTAs to /#enquire-now | Claude Code | DONE | app/kitty-parties/components/KittyHero.jsx, app/kitty-parties/components/KittyPackages.jsx, app/banquet/components/BanquetPackages.jsx, app/banquet/components/BanquetHero.jsx, components/sections/ContactHero.jsx | COMPLETED 2026-06-02 15:00 - Fixed NAV-005, NAV-009, NAV-011 (7 broken links across 5 files) |
+| AUDIT-FIX-02 | Redirect /contact links to /#enquire-now | Claude Code | DONE | components/sections/DiningGlimpse.jsx, components/sections/MenuHighlights.jsx, components/sections/DiningHero.jsx, components/sections/CTABand.jsx, components/sections/StoryTeaser.jsx, components/sections/CorporatePackages.jsx, components/sections/ExperiencesHero.jsx, components/sections/EventTypes.jsx, components/sections/HeroCinematic.jsx | COMPLETED 2026-06-02 15:00 - Fixed NAV-012 (10 /contact links across 9 files) |
+
+**FOUND:**
+- 7 broken #enquiry links across 5 files
+- 10 /contact links across 9 files  
+- Target /#enquire-now confirmed present at components/sections/EnhancedCTABand.jsx:80
+
 ## PROJECT COMPLETION STATUS (Claude Code - June 2, 2026)
 
 **🎯 DEVELOPMENT COMPLETE - READY FOR FINAL REVIEW**
