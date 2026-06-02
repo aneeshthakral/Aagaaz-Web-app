@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { Container } from "./Container";
 import { Logo } from "../shared/Logo";
 import { MobileNav } from "./MobileNav";
-import { Button } from "../ui/button";
+import { StarBorder } from "../shared/StarBorder";
 import { cn } from "@/lib/utils";
 
 /**
- * Main navigation component with revenue pages prioritized
- * Features: Logo, nav links, persistent Enquire CTA, mobile menu
+ * Brand-themed sticky navigation with StarBorder CTA
+ * Features: Gold background, dark text (contrast compliance), all 7 items visible
  */
 
 const navigationItems = [
@@ -23,7 +23,7 @@ const navigationItems = [
   { name: "Dining", href: "/dining" },
   { name: "Experiences", href: "/experiences" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
+  { name: "Story", href: "/story" },
 ];
 
 export function Navbar() {
@@ -37,49 +37,55 @@ export function Navbar() {
   };
 
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
-      <Container>
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Logo />
+    <>
+      {/* Height reservation spacer to prevent hero overlap */}
+      <div className="h-20" />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden items-center space-x-1 md:flex lg:space-x-2">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActivePage(item.href) ? "page" : undefined}
-                className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 lg:px-4",
-                  "hover:bg-accent/5 hover:text-secondary",
-                  isActivePage(item.href)
-                    ? "bg-accent/10 text-secondary"
-                    : "text-foreground",
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-accent border-b border-accent-hover/20 shadow-sm">
+        <Container>
+          <div className="flex h-20 items-center justify-between">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <Logo />
+            </div>
 
-          {/* Right side: Enquire CTA + Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            {/* Enquire CTA Button */}
-            <Button
-              asChild
-              className="bg-accent text-accent-foreground hover:bg-accent/90 hidden font-medium sm:inline-flex"
-            >
-              <Link href="/contact">Enquire Now</Link>
-            </Button>
+            {/* Desktop Navigation - All 7 items visible */}
+            <nav className="hidden items-center space-x-1 lg:flex xl:space-x-3">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActivePage(item.href) ? "page" : undefined}
+                  className={cn(
+                    "rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 xl:px-4",
+                    "hover:bg-white/10 hover:text-charcoal/90",
+                    isActivePage(item.href)
+                      ? "bg-white/15 text-charcoal font-semibold"
+                      : "text-charcoal/80",
+                  )}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
 
-            {/* Mobile Menu Toggle */}
-            <div className="md:hidden">
-              <MobileNav />
+            {/* Right side: StarBorder Enquire CTA + Mobile Menu */}
+            <div className="flex items-center space-x-4">
+              {/* StarBorder Enquire CTA Button - Desktop only */}
+              <div className="hidden lg:block">
+                <StarBorder as={Link} href="/#enquire-now" className="hover:scale-105 transition-transform duration-200">
+                  Enquire Now
+                </StarBorder>
+              </div>
+
+              {/* Mobile Menu Toggle */}
+              <div className="lg:hidden">
+                <MobileNav />
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
-    </header>
+        </Container>
+      </header>
+    </>
   );
 }

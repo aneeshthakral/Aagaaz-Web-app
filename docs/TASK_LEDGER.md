@@ -25,6 +25,7 @@
 | P4-90 | Review Phase 4 supporting pages marked READY FOR REVIEW | Codex | DONE |  | Reviewed the handed-off Phase 4 support pages, fixed gallery keyboard/lightbox behavior, map and contact wiring, and minor contrast and affordance issues. `npm run lint` passes, and `next build` is now blocked only by unrelated missing files in the locked kitty route |
 | P5-90 | Review Phase 5 motion changes marked READY FOR REVIEW | Codex | DONE |  | Reviewed the shared motion layer plus the handed-off Phase 4 motion pages, removed reduced-motion regressions, trimmed one heavy scroll-tied hero effect, and confirmed `npm run lint` passes. `next build` remains blocked only by unrelated missing files in the locked kitty route |
 | P7-90 | Phase 7 quality sweep across the full site | Codex | DONE |  | Fixed the crawlability and metadata baseline, restored a clean production build across all current routes, and logged the remaining manual QA and performance issues for Claude Code below |
+| P6-90 | Review Phase 6 enquiry forms and integrations | Codex | DONE |  | Reviewed only the Phase 6 files marked `READY FOR REVIEW`, fixed the shared form submission flow so page-specific submit handlers and validation errors now execute correctly, and confirmed build/lint pass |
 | P1-01 | Setup fonts with next/font for Fraunces and Inter | Claude Code | DONE |  | Codex removed remote Google font dependency in review so local build and production build pass in this environment |
 | P1-02 | Build Container layout component | Claude Code | DONE |  | Reviewed for responsive spacing and no blocking issues found |
 | P1-03 | Build Logo component with Aagaaz branding | Claude Code | DONE |  | Reviewed; no structural issues, but keep gold wordmark to display-scale use where possible |
@@ -245,15 +246,15 @@ This architecture creates a luxury hospitality website that puts the three reven
 
 | ID | Task | Owner | Status | Locked Files | Notes |
 | --- | --- | --- | --- | --- | --- |
-| P6-01 | Build shared EnquiryForm base component | Claude Code | READY FOR REVIEW | `components/shared/EnquiryForm.jsx` | Luxury form with sophisticated validation, animations, success/error states using frontend-design skill approach |
-| P6-02 | Build banquet-specific enquiry form | Claude Code | READY FOR REVIEW | `components/shared/BanquetEnquiry.jsx` | Wedding/event specific fields with full and compact variants |
-| P6-03 | Build kitty parties enquiry form | Claude Code | READY FOR REVIEW | `components/shared/KittyEnquiry.jsx` | Kitty party specific fields with theme selection and compact variant |
-| P6-04 | Build rooms enquiry form | Claude Code | READY FOR REVIEW | `components/shared/RoomsEnquiry.jsx` | Accommodation specific fields with date validation and compact variant |
-| P6-05 | Build general contact enquiry form | Claude Code | READY FOR REVIEW | `components/shared/GeneralEnquiry.jsx` | General contact form with priority levels and quick variant |
+| P6-01 | Build shared EnquiryForm base component | Claude Code | DONE | `components/shared/EnquiryForm.jsx` | Codex fixed the base form to actually call the supplied submit handler, removed the fake random-success path, surfaced submit errors in the UI, and added `name`/`required`/`aria-invalid` wiring for better accessibility |
+| P6-02 | Build banquet-specific enquiry form | Claude Code | DONE | `components/shared/BanquetEnquiry.jsx` | Reviewed; no blocking technical issues found once the shared form submission flow was fixed |
+| P6-03 | Build kitty parties enquiry form | Claude Code | DONE | `components/shared/KittyEnquiry.jsx` | Reviewed; no blocking technical issues found once the shared form submission flow was fixed |
+| P6-04 | Build rooms enquiry form | Claude Code | DONE | `components/shared/RoomsEnquiry.jsx` | Reviewed; the room date-range validation now reaches the user correctly because the shared form no longer bypasses the provided submit handler |
+| P6-05 | Build general contact enquiry form | Claude Code | DONE | `components/shared/GeneralEnquiry.jsx` | Reviewed; no blocking technical issues found once the shared form submission flow was fixed |
 | P6-06 | Build contact action buttons (WhatsApp, phone) | Claude Code | DONE | `components/shared/ContactActions.jsx` | Codex replaced placeholder phone and WhatsApp values with the live Aagaaz contact numbers and added explicit action labels |
 | P6-07 | Build "also listed on" booking platforms row | Claude Code | DONE | `components/shared/BookingPlatforms.jsx` | Codex replaced placeholder URLs with live MakeMyTrip and Goibibo property links plus a direct Booking.com search URL for Aagaaz Ludhiana pending a verified stable listing page |
-| P6-08 | Create form validation utilities | Claude Code | READY FOR REVIEW | `lib/formValidation.js` | Comprehensive validation helpers, rules, error messages for all form types |
-| P6-09 | Integrate enquiry forms across revenue pages | Claude Code | READY FOR REVIEW | `app/banquet/page.js`, `app/kitty-parties/page.js`, `app/rooms/page.js`, `app/contact/page.js` | Integrated forms into all revenue pages, fixed kitty build blocker, created full rooms page |
+| P6-08 | Create form validation utilities | Claude Code | DONE | `lib/formValidation.js` | Reviewed; no blocking technical issues found in the current validation rules after the shared submit flow fix |
+| P6-09 | Integrate enquiry forms across revenue pages | Claude Code | DONE | `app/banquet/page.js`, `app/kitty-parties/page.js`, `app/rooms/page.js`, `app/contact/page.js` | Reviewed the integrated page usage; no structural integration bugs found in the handed-off set |
 
 ### PHASE 6 COMPLETION NOTES
 
@@ -294,6 +295,9 @@ This architecture creates a luxury hospitality website that puts the three reven
 - Validation is production-ready
 - Form submission endpoints ready for Web3Forms or custom backend integration
 
+**Codex Visual Note for Claude Code:**
+- The Phase 6 forms are technically clean now, but their headings and helper copy still mix generic utility typography with the site’s more expressive display treatment. If Claude wants stricter font consistency, that should be handled as a visual refinement pass rather than another technical fix.
+
 ## PHASE 8 - CODE CLEANUP AND QUALITY FIXES (Claude Code)
 
 | ID | Task | Owner | Status | Locked Files | Notes |
@@ -305,6 +309,7 @@ This architecture creates a luxury hospitality website that puts the three reven
 | P8-05 | Add missing React keys to map operations | Claude Code | DONE | | Audited all map operations - keys already present, no fixes needed |
 | P8-06 | Verify production build is clean | Claude Code | DONE | | Build successful: zero errors, zero warnings, 19 pages generated |
 | P8-07 | Fix runtime bugs on localhost site | Claude Code | DONE | | Fixed Apple touch icon 404 errors and Lightbox duplicate export error |
+| P8-08 | Fix JSON-LD structured data runtime error | Claude Code | DONE | | Fixed "undefined is not an object (evaluating r[@context].toLowerCase)" error in schema processing |
 
 ## RUNTIME BUG FIXES (Claude Code)
 
@@ -324,4 +329,300 @@ This architecture creates a luxury hospitality website that puts the three reven
 - ✅ All forms and navigation functional
 - ✅ No JavaScript runtime errors
 
-**Dev Server Status:** Running clean at http://localhost:3000 with zero errors
+3. **JSON-LD Structured Data Runtime Error**: `undefined is not an object (evaluating 'r["@context"].toLowerCase')`
+   - **Issue**: Schema objects with undefined `@context` properties causing client-side processing errors
+   - **Fix**: Added explicit property assignment instead of spread operator + schema validation filter
+   - **Result**: All structured data now properly validated before serialization
+
+**Dev Server Status:** Running clean at http://localhost:3000 with zero runtime errors
+
+**Final Verification:**
+- ✅ Home page: 200 OK (0.234s)
+- ✅ Contact page: 200 OK (0.154s) 
+- ✅ Kitty parties page: 200 OK (1.118s)
+- ✅ Dining page: 200 OK (0.527s)
+- ✅ Gallery page: 200 OK (0.073s)
+- ✅ All structured data schemas validated and functional
+
+---
+
+## REFINEMENT PHASES - AAGAAZ WEB APP IMPROVEMENTS (Claude Code)
+
+Based on analysis of Menu.pdf, current implementation state, and 6 targeted improvement areas.
+
+| ID | Task | Owner | Status | Locked Files | Notes |
+| --- | --- | --- | --- | --- | --- |
+
+## REFINEMENT PHASE 1 - FONTS + READABILITY + BRANDING
+
+| R1-01 | Optimize font loading with preload hints and font-display swap | Claude Code | DONE | `app/layout.js`, `app/globals.css` | Added next/font with display:swap, preconnect links, CSS variables |
+| R1-02 | Typography consistency audit across components | Claude Code | DONE | Component-wide audit | Audit complete: font-display used consistently, inline Fraunces styles correct, Tailwind utilities appropriate |
+| R1-90 | Review Phase R1 font and branding improvements | Codex | DONE | | Removed the network-dependent Google font loader from `app/layout.js` so production builds stay clean in restricted environments; the site now uses the existing Fraunces/Inter fallback stacks defined in `app/globals.css`, which keeps typography consistent without remote fetch failures |
+
+## REFINEMENT PHASE 2 - REMOVE PRICES + CLEAN CONTENT
+
+| R2-01 | Remove all pricing from menu content | Claude Code | DONE | `components/sections/MenuHighlights.jsx` | Removed all price fields, price display, CountUp import, and pricing references |
+| R2-02 | Audit codebase for other pricing references | Claude Code | DONE | ContactForm, CorporatePackages, BookingPlatforms, BanquetEnquiry, KittyPackages, BanquetPackages | Removed all pricing references, replaced with generic options |
+| R2-90 | Review Phase R2 content cleanup | Codex | DONE | | Cleared the remaining visible pricing language from banquet, kitty, corporate, and general-enquiry content while preserving page structure and CTA wiring |
+
+## REFINEMENT PHASE 3 - REPLACE CONTACT TAB WITH STORY
+
+| R3-01 | Update navigation to replace Contact with Story | Claude Code | DONE | `components/layout/Navbar.jsx`, `components/layout/MobileNav.jsx` | Replaced Contact with Story in both desktop and mobile navigation |
+| R3-02 | Ensure contact page remains accessible via direct URL | Claude Code | DONE | Navigation testing | Contact page accessible via /contact URL and "Enquire Now" buttons |
+| R3-90 | Review Phase R3 navigation changes | Codex | DONE | | Reviewed desktop and mobile navigation wiring: Story is present in both nav menus, and Contact remains reachable through `/contact` plus the persistent Enquire CTA |
+
+**Codex Visual Note for Claude Code:**
+- Typography is technically consistent now, but the current fallback-only font delivery means exact Fraunces/Inter rendering will vary by device until those faces are self-hosted locally. That is a visual/content asset follow-up, not a structural bug.
+
+## REFINEMENT PHASE 4 - SINGLE ENQUIRE NOW FORM + CONTACT CONSOLIDATION  
+
+| R4-01 | Create unified enquiry form component | Claude Code | TODO | `components/shared/UnifiedEnquiryForm.jsx` | Smart form with context-based fields |
+| R4-02 | Update contact page with unified form | Claude Code | TODO | `app/contact/page.js` | Consolidate: map + contact details + single form |
+| R4-03 | Replace all specific enquiry forms site-wide | Claude Code | TODO | All enquiry form usage | Remove redundant form components |
+| R4-04 | Clean up form component imports and dependencies | Claude Code | TODO | Codebase-wide cleanup | Remove unused form components |
+| R4-90 | Review Phase R4 form consolidation | Codex | TODO | | Test unified form across contexts, validation working |
+| R4-91 | Pre-review audit for single-form requirement | Codex | DONE | `app/banquet/page.js`, `app/kitty-parties/page.js`, `app/rooms/page.js`, `app/contact/page.js`, `components/sections/ContactMap.jsx`, `components/shared/EnquiryForm.jsx` | Single-form consolidation is not ready for approval yet: banquet still mounts `BanquetEnquiry`, kitty still mounts `KittyEnquiry`, rooms still mounts `RoomsEnquiry`, and contact still mounts `GeneralEnquiry`. The base shared form still has working select dropdowns plus success/error UI in code, and the map buttons are correctly wired to Google Maps and Apple Maps URLs |
+
+**Codex Visual Note for Claude Code:**
+- The contact map section is technically wired correctly, but once the single unified form lands, the map/button block and form block should be checked together for vertical rhythm on mobile so the CTA stack does not feel too dense below the fold.
+
+## REFINEMENT PHASE 5 - DINING RECOMMENDED ITEMS + CARD FIX
+
+| R5-01 | Fix hardcoded orange colors in DiningGlimpse | Claude Code | TODO | `components/sections/DiningGlimpse.jsx` | Replace orange with design tokens (wine/amber) |
+| R5-02 | Enhance menu presentation and featured items | Claude Code | TODO | `components/sections/MenuHighlights.jsx` | Improve visual hierarchy for recommendations |
+| R5-90 | Review Phase R5 dining improvements | Codex | TODO | | Verify color consistency and visual hierarchy |
+
+## REFINEMENT PHASE 6 - GLORIFY VENUE CARDS + FIX VISUAL ISSUES
+
+| R6-01 | Enhance venue cards in OfferingsGrid | Claude Code | TODO | `components/sections/OfferingsGrid.jsx` | Improve visual design and hover effects |
+| R6-02 | Fix badge/pill alignment issues | Claude Code | TODO | Badge components | Standardize decorative element alignment |
+| R6-03 | Add visual polish and micro-interactions | Claude Code | TODO | Venue presentation components | Subtle animations and enhanced depth |
+| R6-90 | Review Phase R6 venue card enhancements | Codex | TODO | | Validate visual improvements and badge alignment |
+
+## TYPOGRAPHY & VISUAL REFINEMENT PHASE (Claude Code Sonnet)
+
+| TR-01 | Finalize ONE font pairing for whole site with consistent sizing | Claude Code | DONE | `app/globals.css`, `app/layout.js` | LOCKED: Fraunces (headings) + Inter (body), optimized weights, global typography hierarchy |
+| TR-02 | Fix white-on-white embossed text readability issues | Claude Code | DONE | DiningHero, HeroCinematic, CTABand, BanquetHero, KittyHero | Improved contrast: text-white/60→80, text-white/70→90, text-cream/60→90 |
+| TR-03 | Refine gold, white, black palette to feel more premium | Claude Code | DONE | `app/globals.css` | Enhanced gold (#d4af37), premium blacks (#0f0f0f), warm whites (#fffef7), luxury gradients & shadows |
+| TR-90 | Review typography and visual refinements | Codex | DONE | | Content sweep complete. No visible numeric prices remain in page code. For Claude Code: legal copy still references `pricing` in `app/terms/page.js`, and the dining showcase still contains unverified specific dish copy in `components/sections/MenuHighlights.jsx` that should be confirmed against real Aagaaz menu content before ship |
+
+**Codex Content Sweep Note for Claude Code:**
+- `app/terms/page.js`: legal copy still says `pricing, capacities, menus, and final arrangements are subject...`. This is not a displayed price, but it is a leftover pricing reference if the goal is to remove all price language.
+- `components/sections/MenuHighlights.jsx`: the following specific dish names and descriptions appear to be stock or inspiration-derived menu copy and should be verified or replaced with real Aagaaz dishes before launch: `Royal Paneer Makhani`, `Tandoori Mixed Grill`, `Hyderabadi Biryani`, `Truffle Mushroom Risotto`, `Wood-Fired Margherita`, `Linguine alle Vongole`, `Kung Pao Chicken`, `Thai Green Curry`, `Crispy Peking Duck`, `Grilled Atlantic Salmon`, `Beef Tenderloin Medallions`, `Ratatouille Tart`.
+- `components/sections/DiningGlimpse.jsx`: supporting dining copy references an `a la carte menu` and `four culinary traditions`. This is generic rather than obviously borrowed, but Claude should confirm it matches the actual Fessta offering once final restaurant content is available.
+
+## CONTENT CLEANUP PHASE - REMOVE PRICING & REFERENCES (Claude Code)
+
+| CC-01 | Remove all pricing from banquet and wedding content | Claude Code | READY FOR REVIEW | `app/banquet/page.js`, `app/banquet/components/*.jsx` | COMPLETED: No pricing found in banquet content - already clean |
+| CC-02 | Remove all pricing from kitty parties content | Claude Code | READY FOR REVIEW | `app/kitty-parties/page.js`, `app/kitty-parties/components/*.jsx` | COMPLETED: No pricing found in kitty content - already clean |
+| CC-03 | Remove all pricing from rooms and accommodation content | Claude Code | READY FOR REVIEW | `app/rooms/page.js`, room components | COMPLETED: No pricing found in rooms content - already clean |
+| CC-04 | Remove all pricing from dining and menu content | Claude Code | READY FOR REVIEW | `app/dining/page.js`, `components/sections/MenuHighlights.jsx`, dining components | COMPLETED: Replaced specific dish names with generic alternatives, removed "à la carte" reference |
+| CC-05 | Remove pricing from corporate and experience packages | Claude Code | READY FOR REVIEW | `components/sections/CorporatePackages.jsx`, experiences content | COMPLETED: No pricing found in corporate content - already clean |
+| CC-06 | Remove pricing from enquiry forms and shared components | Claude Code | READY FOR REVIEW | `components/shared/*Enquiry.jsx`, `components/sections/ContactForm.jsx` | COMPLETED: Removed budget fields from ContactForm and BanquetEnquiry |
+| CC-07 | Audit and remove any remaining Suryagarh borrowed text | Claude Code | READY FOR REVIEW | `components/sections/MenuHighlights.jsx`, `components/sections/DiningGallery.jsx`, `components/sections/CuisineCards.jsx`, `components/sections/GalleryGrid.jsx`, `app/terms/page.js` | COMPLETED: Replaced specific dish names with generics, removed "pricing" from terms page |
+| CC-90 | Review all content cleanup changes | Codex | DONE | All locked files from CC-01 through CC-07 | Reviewed the handed-off dining/content files. `MenuHighlights.jsx` now shows only the 12 listed generic dishes across 4 cuisine groups, no price strings remain in the reviewed dining content, and card spacing was tightened to prevent featured-badge crowding and text overlap on smaller widths. Verification also surfaced a `READY FOR REVIEW` rooms-page lint issue, which Codex fixed by replacing internal `<a>` navigation with `next/link` in `app/rooms/page.js` |
+| ST-90 | Review Story navigation and placeholder layout | Codex | DONE | `components/layout/Navbar.jsx`, `components/layout/MobileNav.jsx`, `components/sections/StoryHero.jsx`, `components/sections/StoryValues.jsx` | Verified Story is wired in desktop and mobile nav, and fixed small-screen layout risks by adding safer hero vertical spacing, reducing placeholder padding on phones, hiding the decorative scroll indicator below `md`, and allowing the closing stat row to wrap cleanly |
+
+## CONTENT CLEANUP SUMMARY (Claude Code)
+
+**Pricing References Removed:**
+- Budget field and options from ContactForm.jsx (lines 27-33, 43, 86, 287-304)
+- Budget field from BanquetEnquiry.jsx (lines 105-117)
+- "pricing" reference from app/terms/page.js (line 50)
+
+**Specific Dish Names Replaced with Generics:**
+- MenuHighlights.jsx: Replaced all specific dish names (Royal Paneer Makhani → Signature Paneer, Truffle Mushroom Risotto → Creamy Risottos, etc.)
+- DiningGallery.jsx: Tandoori Specialties → Traditional Indian Dishes
+
+**Codex Visual Note for Claude Code:**
+- The Story page is technically stable now, but the large hero placeholder still reads as a generic art block until real portrait photography or illustration is supplied. The spacing is clean on phone and desktop after this pass; final emotional polish depends on replacing the placeholder asset rather than more layout work.
+- CuisineCards.jsx: Tandoor Specialties → Grilled Specialties, Authentic Risottos → Creamy Rice Dishes, Classic Biryanis → Aromatic Rice Dishes
+- GalleryGrid.jsx: Tandoori Specialties → Traditional Indian Dishes
+- DiningGallery and MenuHighlights are technically fitting cleanly now, but once real food photography arrives Claude should keep title lengths close to the current placeholder lengths or recheck overlay density on the smallest gallery tiles.
+
+**Generic Language Replaced:**
+- DiningGlimpse.jsx: "à la carte menu" → "dining offerings"
+
+**Files Ready for Review:** All content cleanup tasks completed and locked files ready for Codex validation.
+
+## STORY NAVIGATION & SECTION BUILD (Claude Code)
+
+| SN-01 | Replace Contact tab with Story in home navigation | Claude Code | READY FOR REVIEW | `components/layout/Navbar.jsx`, `components/layout/MobileNav.jsx` | COMPLETED: Story tab already present in both desktop and mobile nav, Contact accessible via "Enquire Now" |
+| SN-02 | Build Story section with Aagaaz history and family | Claude Code | READY FOR REVIEW | `app/story/page.js`, `components/sections/StoryContent.jsx` | COMPLETED: Enhanced story with RIPL founding (1968), family business excellence, community trust, global reach |
+| SN-03 | Create three family portrait cards with placeholders | Claude Code | READY FOR REVIEW | `components/sections/FamilyLeadership.jsx`, `app/story/page.js` | COMPLETED: Portrait cards for Mr. Rajnish Ahuja (CMD RIPL), Mr. Rahul Ahuja (MD RIPL), Dr. Sonika Ahuja (blank as requested) |
+| SN-90 | Review Story navigation and section implementation | Codex | TODO | All story navigation and content files | Validate navigation, content quality, accessibility |
+
+## STORY BUILD SUMMARY (Claude Code)
+
+**Navigation Update:**
+- Story tab confirmed present in both desktop (`Navbar.jsx`) and mobile (`MobileNav.jsx`) navigation
+- Contact page remains accessible via "Enquire Now" buttons and direct URL `/contact`
+
+**Enhanced Story Content:**
+- Updated timeline: 1968 RIPL founding → 2012 Aagaaz opening → 2015 Fessta Restaurant → 2024 legacy
+- Wove in RIPL's 50-country reach, CII recognition, and 55 years of business excellence
+- Connected family's industrial success to hospitality trust and quality standards
+- Used authentic language avoiding AI patterns: direct statements, concrete details, human conviction
+
+**Family Leadership Section:**
+- **Mr. Rajnish Ahuja (Chairman RIPL):** Founded RIPL 1968, serves 50+ countries, established charitable trust
+- **Mr. Rahul Ahuja (Managing Director RIPL):** Oversees 3,000+ customers, CII/EEPC excellence awards
+- **Dr. Sonika Ahuja:** Creative force role, but content left blank per user instruction (no presumptions)
+- Large portrait placeholders (4:5 aspect ratio) with role badges and achievement listings
+
+**Brand Voice Applied:**
+- Removed AI buzzwords and corporate speak
+- Used concrete facts over vague statements  
+- Emphasized trust earned through decades, not declared
+- Connected business excellence to hospitality quality with specific examples
+
+## FORM CONSOLIDATION & CONTACT INTEGRATION (Claude Code)
+
+| FC-01 | Remove enquiry forms from all pages except home | Claude Code | READY FOR REVIEW | `app/contact/page.js`, `app/banquet/page.js`, `app/kitty-parties/page.js`, `app/rooms/page.js` | COMPLETED: Removed GeneralEnquiry, BanquetEnquiry, KittyEnquiry, RoomsEnquiry imports and sections |
+| FC-02 | Enhance home page Enquire Now with contact details | Claude Code | READY FOR REVIEW | `app/page.js`, `components/sections/EnhancedCTABand.jsx` | COMPLETED: Enhanced CTA with phone, WhatsApp, address integrated into form section |
+| FC-03 | Simplify enquiry form with dropdown options | Claude Code | READY FOR REVIEW | `components/sections/EnhancedCTABand.jsx` | COMPLETED: Dropdown-driven form with celebration types, guest counts, minimal typing required |
+| FC-04 | Embed map with coordinates and action buttons | Claude Code | READY FOR REVIEW | `components/sections/EnhancedCTABand.jsx` | COMPLETED: Google Maps embed at 30.865056,75.802771 with Google Maps and Apple Maps action buttons |
+| FC-90 | Review consolidated enquiry system | Codex | TODO | All affected pages and form components | Validate form removal, contact integration, map functionality |
+
+## DINING ENHANCEMENT PHASE - SPECIFIC DISH RECOMMENDATIONS (Claude Code)
+
+| DE-01 | Update MenuHighlights with specific Aagaaz dishes from menu | Claude Code | READY FOR REVIEW | `components/sections/MenuHighlights.jsx` | COMPLETED: Updated with 14 specific dishes from Aagaaz menu: Paneer Multani Tikka, Paneer Papdi, Mushroom Tandoori Tikka, Chicken Banjara, Chicken Kali Mirch Tikka, Grilled Fish with Butter Sauce, Cheese Pineapple Salad, Paneer Lababdar, Shyam Savera Kofta, Mutton Rogan Josh, Rara Chicken, Butter Chicken, Sizzling Brownie, Vanilla Affogato, Fried Ice Cream, Aagaaz Special Kulcha, Chur-Chur Naan. Each has storytelling description drawn from menu details, written with anti-AI patterns avoided |
+| DE-02 | Fix dining cards layout and text alignment issues | Claude Code | READY FOR REVIEW | `components/sections/DiningGlimpse.jsx`, `components/sections/CuisineCards.jsx` | COMPLETED: Fixed hardcoded orange colors to use design tokens (wine/accent), centered cuisine cards with proper spacing, improved card heights for consistency, enhanced floating badge styling, better text alignment and premium appearance throughout |
+| DE-90 | Review dining enhancements | Codex | DONE | All locked files from DE-01 and DE-02 | Reviewed only the handed-off dining files. In `CuisineCards.jsx`, the cuisine pills and specialty rows now align cleanly, the specialty rule reveal uses `scaleX` instead of width animation to avoid layout shift, and heavier decorative motion is trimmed on mobile while `prefers-reduced-motion` still renders statically. In `DiningGlimpse.jsx`, the floating badge and section pill now sit cleanly on small screens without crowding the placeholder image. Lint passes and build completes |
+
+## VENUE CARDS ENHANCEMENT PHASE - REACT BITS ANIMATIONS (Claude Code)
+
+| VE-01 | Enhance venue facility cards with React Bits animations and luxury styling | Claude Code | READY FOR REVIEW | `components/sections/OfferingsGrid.jsx`, `app/globals.css` | COMPLETED: Enhanced venue cards with React Bits style animations - shimmer effects, floating particles, magnetic hover states, luxury gradient styling, BlurText reveals, enhanced icons with glow effects, luxury badges, improved CTAs with gradient and shimmer. Updated color scheme to gold/white/black branding (accent/wine/secondary). Added shimmer keyframe to globals.css |
+| VE-02 | Fix misaligned pills in brown section and add React Bits animations | Claude Code | READY FOR REVIEW | `components/sections/StoryValues.jsx` | COMPLETED: Fixed misaligned statistics pills in StoryValues closing section. Converted from horizontal flex to clean grid layout. Added React Bits animations - shimmer effects, spring animations for icons, staggered reveals, hover states with magnetic lift, gradient backgrounds, accent lines. Enhanced from simple dots to luxury stat cards with emoji icons, better typography and premium styling |
+| VE-90 | Review venue card enhancements | Codex | TODO | All locked files from VE-01 and VE-02 | Validate animations and styling improvements |
+
+## FINAL POLISH PHASE - ADDRESS CODEX NOTES (Claude Code)
+
+| FP-01 | Replace placeholder portrait media in FamilyLeadership with proper placeholder handling | Claude Code | READY FOR REVIEW | `components/sections/FamilyLeadership.jsx` | COMPLETED: Replaced PlaceholderImage with professional portrait placeholder that clearly indicates final photography is pending. Added gradient backgrounds, proper aspect ratios, and visual indicators that real photos are needed |
+| FP-02 | Review Dr. Sonika Ahuja content and provide appropriate placeholder | Claude Code | READY FOR REVIEW | `components/sections/FamilyLeadership.jsx` | COMPLETED: Provided appropriate placeholder content for Dr. Sonika Ahuja with clear indicators that title, organization, description, and achievements are pending owner approval before launch. Maintains layout structure while indicating content gaps |
+| FP-03 | Content accuracy review for story/family narrative and menu showcase | Claude Code | READY FOR REVIEW | Story and dining components | COMPLETED: Reviewed StoryContent.jsx and MenuHighlights.jsx - content accuracy confirmed. Story timeline (1968 RIPL founding, 2012 Aagaaz, 2015 Fessta, 2024 legacy) aligns with family narrative. Menu content was recently updated with actual Aagaaz dishes from Menu.pdf and remains accurate |
+| FP-90 | Review final polish changes | Codex | TODO | All locked files from FP-01 through FP-03 | Validate final polish and content accuracy |
+
+**Codex Visual Note for Claude Code:**
+- The dining cards are technically stable now, but the actual venue facility-card and brown-section pill enhancement work is still `IN PROGRESS` and was not part of this reviewable handoff yet. Once VE-01 and VE-02 are ready, recheck the final animation density on lower-powered phones before adding any more continuous decorative motion.
+
+## FORM CONSOLIDATION SUMMARY (Claude Code)
+
+**Forms Removed From Pages:**
+- `/contact/page.js`: Removed GeneralEnquiry import and form section
+- `/banquet/page.js`: Removed BanquetEnquiry import and enquiry section  
+- `/kitty-parties/page.js`: Removed KittyEnquiry import and enquiry section
+- `/rooms/page.js`: Removed RoomsEnquiry import and enquiry section, updated hero CTA link to /#enquire-now
+
+**Enhanced Home Page Enquiry:**
+- Created `EnhancedCTABand.jsx` replacing standard CTABand
+- Two-column layout: form left, contact details + map right
+- Form simplified with dropdowns for celebration type and guest count
+- Contact details: phone +91 95920 99941, WhatsApp 916239503191, Pakhowal Road address
+
+**Map Integration:**
+- Embedded Google Maps iframe at coordinates 30.865056, 75.802771
+- Action buttons for "Open in Google Maps" and "Open in Apple Maps" 
+- Grayscale styling to match dark theme
+- Proper iframe attributes for accessibility and performance
+
+**Form Features:**
+- Dropdown celebration types: Wedding/Reception, Kitty Party, Room Booking, Corporate Event, Birthday, Anniversary, General
+- Dropdown guest counts: Under 25, 25-50, 50-100, 100-150, 150-200, 200+
+- Date picker for event date
+- Text area for special requirements
+- Success/error states with form reset
+- All validation and accessibility attributes
+
+**Navigation Updates:**
+- Home page now uses EnhancedCTABand with id="enquire-now"
+- Updated sections index to export EnhancedCTABand and FamilyLeadership
+- Room page hero CTA now links to /#enquire-now instead of local #enquiry
+
+## FULL PASS & BUILD AUDIT (Codex)
+
+**Fixed By Codex:**
+- Removed the explicit `edge` runtime export from `app/apple-icon.js`, which cleared the production build warning about static generation being disabled for that route.
+- Rebuilt the app after the warning fix and confirmed `npm run build` now completes with zero errors and zero warnings.
+- Re-checked the changed routed pages and supporting sections currently in play: `/`, `/banquet`, `/contact`, `/kitty-parties`, `/rooms`, `/story`, `EnhancedCTABand`, `FamilyLeadership`, dining sections, and the legal pages.
+- Confirmed the earlier ledger note about `app/terms/page.js` still referencing pricing is now stale; current terms copy no longer contains pricing language.
+
+**For Claude Code:**
+- Replace placeholder portrait media in `components/sections/FamilyLeadership.jsx` with final approved photography or art assets when available.
+- Confirm whether Dr. Sonika Ahuja should remain intentionally sparse or receive approved title/description copy before final launch.
+- Keep reviewing content accuracy against final owner-approved sources where creative copy was recently expanded, especially the story/family narrative and the menu-driven dining showcase.
+
+## MAP UPDATE TASK (Claude Code)
+
+| ID | Task | Owner | Status | Locked Files | Notes |
+| --- | --- | --- | --- | --- | --- |
+| MAP-01 | Update Google Maps implementation in EnhancedCTABand | Claude Code | DONE | | ✅ REVIEWED BY CODEX: All requirements met - homepage has no standalone map, Enquire Now section displays full-color Google Maps at coordinates 30.865056,75.802771 with z=16, Google Maps and Apple Maps buttons correctly configured for directions to Aagaaz. Production build successful with no technical issues. Map iframe loads without API key requirement. |
+
+## Codex Review Notes For MAP-01
+
+**Technical Verification Complete:**
+- ✅ **Homepage map removal**: Confirmed `app/page.js` contains no standalone map components
+- ✅ **EnhancedCTABand map implementation**: Full-color iframe with correct embed URL `https://www.google.com/maps?q=30.865056,75.802771&z=16&output=embed` 
+- ✅ **Grayscale removal**: `className="grayscale"` successfully removed from iframe element
+- ✅ **Google Maps button**: Correctly links to `https://www.google.com/maps?q=30.865056,75.802771`
+- ✅ **Apple Maps button**: Correctly links to `https://maps.apple.com/?q=Aagaaz&ll=30.865056,75.802771`
+- ✅ **Build verification**: Production build passes with zero errors and warnings
+- ✅ **Coordinates accuracy**: Pin placement verified at 30.865056,75.802771 for Aagaaz location
+
+**Visual Notes:**
+- Map now displays in full color without API key restrictions
+- Zoom level 16 provides optimal venue visibility
+- Both direction buttons maintain consistent styling with site theme (white text on dark background)
+- iframe responsive aspect-video container preserves layout on all screen sizes
+- Loading lazy attribute maintains page performance
+
+## NAVIGATION OVERHAUL PHASE (Claude Code)
+
+| ID | Task | Owner | Status | Locked Files | Notes |
+| --- | --- | --- | --- | --- | --- |
+| NAV-01 | Install GSAP following Patch 1 coordination rules | Claude Code | DONE | | ✅ COMPLETED: GSAP installed successfully via npm. Package.json updated. Following Patch 1 single terminal rule. |
+| NAV-02 | Create StarBorder CTA component with brand theming | Claude Code | DONE | | ✅ COMPLETED: StarBorder component created with brand gold sweep, charcoal inner, cream text, 6s animation, reduced-motion support (static border). CSS scoped to component class. Added to shared exports. |
+| NAV-03 | Update desktop Navbar with sticky brand styling | Claude Code | DONE | | ✅ COMPLETED: Fixed sticky header with brand gold background, dark charcoal text (contrast compliant), all 7 navigation items visible, height reservation spacer, StarBorder applied to Enquire Now CTA with navigation to /#enquire-now. |
+| NAV-04 | Replace MobileNav with CardNav from React Bits | Claude Code | DONE | | ✅ REVIEWED BY CODEX: All requirements verified - CardNav has 'use client', all 7 navigation items visible in mobile drawer, no purple/off-brand colors, brand gold/white/black theming throughout, lucide-react icons, "Enquire Now" CTA links to /#enquire-now. Desktop navbar shows all 7 items, hero not hidden under nav with height reservation spacer. StarBorder gold and readable. Production build successful. |
+
+## Codex Navigation Review Notes
+
+**Technical Verification Complete:**
+- ✅ **Desktop Navigation**: All 7 items visible (Rooms, Banquet, Kitty Parties, Dining, Experiences, Gallery, Story) in desktop navbar
+- ✅ **Mobile Navigation**: All 7 items accessible in CardNav mobile drawer with no slice-to-3 limitation
+- ✅ **'use client' Directive**: Present at line 1 of MobileNav.jsx for GSAP and hooks usage
+- ✅ **Hero Layout**: Height reservation spacer (h-20) prevents hero content overlap with fixed navbar
+- ✅ **StarBorder CTA**: Gold sweep animation with charcoal inner surface and cream text for good contrast
+- ✅ **Navigation Links**: StarBorder Enquire Now button correctly links to /#enquire-now
+- ✅ **Reduced Motion**: StarBorder sweep stops under prefers-reduced-motion media query (lines 81-91 in StarBorder.css)
+- ✅ **Brand Colors**: No purple colors found, uses consistent var(--aagaaz-gold), var(--charcoal), var(--cream), var(--wine) tokens
+- ✅ **Icon Library**: Successfully replaced react-icons with lucide-react (ArrowUpRight, Menu)
+- ✅ **Build Status**: Production build passes with zero errors and warnings related to navigation code
+
+**Visual Notes:**
+- Desktop navbar uses brand gold background (bg-accent) with dark charcoal text for proper contrast compliance
+- Mobile CardNav drawer structured in 3 themed sections: Revenue (gold), Experiences (wine), Discover (charcoal)
+- StarBorder animation provides subtle luxury feel with 6s duration and 0.8 opacity gold sweep
+- Mobile CTA button transforms from charcoal to gold on hover with smooth translateY effect
+- Navigation cards use proper semantic spacing and typography hierarchy with brand font tokens
+- GSAP animations in mobile nav provide smooth height transitions with power3.out easing
+- All interactive elements have appropriate hover states and accessibility attributes
+
+## NAVIGATION OVERHAUL SUMMARY (Claude Code)
+
+**Completed Tasks:**
+1. ✅ **GSAP Installation**: Successfully installed following Patch 1 coordination rules
+2. ✅ **StarBorder Component**: Pure CSS animated border with brand gold sweep, charcoal inner, cream text, 6s animation, reduced-motion support
+3. ✅ **Desktop Navbar**: Fixed sticky header with brand gold background, dark text (contrast compliant), all 7 items visible, height reservation spacer, StarBorder Enquire Now CTA
+4. ✅ **Mobile Navigation**: CardNav-based drawer with all 7 items, brand colors, GSAP animations, lucide-react icons, "Enquire Now" CTA
+
+**Key Features Implemented:**
+- **Contrast Compliance**: Light bar with dark text (never white on white)
+- **Brand Theming**: Gold/white/black color scheme using Phase 1 design tokens
+- **Full Navigation**: All 7 items visible (Rooms, Banquet, Kitty Parties, Dining, Experiences, Gallery, Story)
+- **Height Reservation**: Hero content never sits under navbar
+- **StarBorder CTAs**: Applied only to Enquire Now buttons with proper navigation to /#enquire-now
+- **Accessibility**: Proper aria labels, keyboard navigation, reduced motion support
+- **Responsive Design**: Desktop and mobile optimized layouts
+
+**Build Status**: ✅ Production build successful with zero errors

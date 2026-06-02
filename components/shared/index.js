@@ -3,6 +3,7 @@ export { Logo } from "./Logo";
 export { WhatsAppFloat, WhatsAppFloatWithMessage } from "./WhatsAppFloat";
 export { PlaceholderImage, HeroPlaceholder } from "./PlaceholderImage";
 export { default as Lightbox } from "./Lightbox";
+export { StarBorder } from "./StarBorder";
 
 // Enquiry Forms
 export { EnquiryForm } from "./EnquiryForm";

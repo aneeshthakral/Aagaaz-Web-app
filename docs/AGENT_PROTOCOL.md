@@ -10,3 +10,11 @@ These rules are non-negotiable. Both agents read this file before starting work.
 6. **One installer at a time.** Never run `npm install` in both terminals at once. Coordinate every dependency add through the ledger. Claude Code installs build deps, Codex installs tooling deps, and they announce it in the ledger before running.
 7. **Git from day one.** Initialize git locally in Phase 0, long before the GitHub push. Small, frequent commits with clear prefixes: `feat:`, `fix:`, `chore:`, `a11y:`, `perf:`, `seo:`, `docs:`. This gives you history and rollback while building. For any large refactor, the acting agent uses a short-lived branch and merges when green.
 8. **Verify live docs.** For React Bits and shadcn commands, check the official docs at run time. Do not trust pasted commands.
+
+## Patch 1 Rules (Always Apply)
+
+9. **'use client' directive.** Any component using hooks, window, document, or gsap must start with 'use client'.
+10. **Package management coordination.** Only ONE terminal runs npm install at a time, announced in the ledger first. Required installs: gsap. Do NOT use react-icons, use the project's existing icon library instead.
+11. **CSS scoping rules.** React Bits component CSS must be scoped to the component class, never to :root. Remove any 'color-scheme' rule and any redefined global colour variable from copied CSS.
+12. **Contrast requirements.** When recolouring any component, always state contrast: dark surface gets light text, light surface gets dark text. Never white on white.
+13. **Design token consistency.** Map every component's hardcoded font size and colour to the central Phase 1 brand tokens.

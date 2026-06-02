@@ -1,41 +1,167 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useLayoutEffect, useRef, useState } from 'react';
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-import { Button } from "../ui/button";
+import Link from "next/link";
+import { gsap } from 'gsap';
+import { ArrowUpRight, Menu } from 'lucide-react';
 import { Logo } from "../shared/Logo";
-import { cn } from "@/lib/utils";
+import './MobileNav.css';
 
 /**
- * Mobile navigation component using shadcn Sheet
- * Same navigation structure as desktop but optimized for mobile
+ * CardNav-based mobile navigation with brand theming
+ * Features: All 7 items, brand colors, GSAP animations, Enquire Now CTA
  */
 
-const navigationItems = [
-  // Revenue pages first
-  { name: "Rooms", href: "/rooms" },
-  { name: "Banquet", href: "/banquet" },
-  { name: "Kitty Parties", href: "/kitty-parties" },
-
-  // Supporting pages
-  { name: "Dining", href: "/dining" },
-  { name: "Experiences", href: "/experiences" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
-];
-
-export function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false);
+const MobileNav = () => {
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef(null);
+  const cardsRef = useRef([]);
+  const tlRef = useRef(null);
+
+  // Navigation items structured for CardNav - All 7 items, no slice limit
+  const navigationCards = [
+    {
+      label: "Revenue",
+      bgColor: "var(--aagaaz-gold)",
+      textColor: "var(--charcoal)",
+      links: [
+        { label: "Rooms", href: "/rooms", ariaLabel: "View guest rooms" },
+        { label: "Banquet", href: "/banquet", ariaLabel: "View banquet halls" },
+        { label: "Kitty Parties", href: "/kitty-parties", ariaLabel: "View kitty party venues" }
+      ]
+    },
+    {
+      label: "Experiences",
+      bgColor: "var(--wine)",
+      textColor: "var(--cream)",
+      links: [
+        { label: "Dining", href: "/dining", ariaLabel: "View Fessta restaurant" },
+        { label: "Experiences", href: "/experiences", ariaLabel: "View event experiences" }
+      ]
+    },
+    {
+      label: "Discover",
+      bgColor: "var(--charcoal)",
+      textColor: "var(--cream)",
+      links: [
+        { label: "Gallery", href: "/gallery", ariaLabel: "View photo gallery" },
+        { label: "Story", href: "/story", ariaLabel: "Learn about Aagaaz" }
+      ]
+    }
+  ];
+
+  const calculateHeight = () => {
+    const navEl = navRef.current;
+    if (!navEl) return 280;
+
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    if (isMobile) {
+      const contentEl = navEl.querySelector('.card-nav-content');
+      if (contentEl) {
+        const wasVisible = contentEl.style.visibility;
+        const wasPointerEvents = contentEl.style.pointerEvents;
+        const wasPosition = contentEl.style.position;
+        const wasHeight = contentEl.style.height;
+
+        contentEl.style.visibility = 'visible';
+        contentEl.style.pointerEvents = 'auto';
+        contentEl.style.position = 'static';
+        contentEl.style.height = 'auto';
+
+        contentEl.offsetHeight;
+
+        const topBar = 60;
+        const padding = 16;
+        const contentHeight = contentEl.scrollHeight;
+
+        contentEl.style.visibility = wasVisible;
+        contentEl.style.pointerEvents = wasPointerEvents;
+        contentEl.style.position = wasPosition;
+        contentEl.style.height = wasHeight;
+
+        return topBar + contentHeight + padding;
+      }
+    }
+    return 280;
+  };
+
+  const createTimeline = () => {
+    const navEl = navRef.current;
+    if (!navEl) return null;
+
+    gsap.set(navEl, { height: 60, overflow: 'hidden' });
+    gsap.set(cardsRef.current, { y: 50, opacity: 0 });
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(navEl, {
+      height: calculateHeight,
+      duration: 0.4,
+      ease: 'power3.out'
+    });
+
+    tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', stagger: 0.08 }, '-=0.1');
+
+    return tl;
+  };
+
+  useLayoutEffect(() => {
+    const tl = createTimeline();
+    tlRef.current = tl;
+
+    return () => {
+      tl?.kill();
+      tlRef.current = null;
+    };
+  }, [navigationCards]);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      if (!tlRef.current) return;
+
+      if (isExpanded) {
+        const newHeight = calculateHeight();
+        gsap.set(navRef.current, { height: newHeight });
+
+        tlRef.current.kill();
+        const newTl = createTimeline();
+        if (newTl) {
+          newTl.progress(1);
+          tlRef.current = newTl;
+        }
+      } else {
+        tlRef.current.kill();
+        const newTl = createTimeline();
+        if (newTl) {
+          tlRef.current = newTl;
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isExpanded]);
+
+  const toggleMenu = () => {
+    const tl = tlRef.current;
+    if (!tl) return;
+    if (!isExpanded) {
+      setIsHamburgerOpen(true);
+      setIsExpanded(true);
+      tl.play(0);
+    } else {
+      setIsHamburgerOpen(false);
+      tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
+      tl.reverse();
+    }
+  };
+
+  const setCardRef = i => el => {
+    if (el) cardsRef.current[i] = el;
+  };
 
   const isActivePage = (href) => {
     if (href === "/") {
@@ -44,60 +170,70 @@ export function MobileNav() {
     return pathname.startsWith(href);
   };
 
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
-          <Menu className="h-5 w-5" />
-          <span className="sr-only">Open menu</span>
-        </Button>
-      </SheetTrigger>
-
-      <SheetContent side="right" className="w-80 p-0">
-        <SheetHeader className="border-b px-6 py-4">
-          <SheetTitle>
-            <Logo size="sm" href="/" />
-          </SheetTitle>
-        </SheetHeader>
-
-        <div className="flex flex-col">
-          {/* Navigation Links */}
-          <nav className="flex flex-col space-y-1 p-6">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={handleLinkClick}
-                aria-current={isActivePage(item.href) ? "page" : undefined}
-                className={cn(
-                  "flex items-center rounded-lg px-4 py-3 text-base font-medium transition-colors duration-200",
-                  "hover:bg-accent/10 hover:text-secondary",
-                  isActivePage(item.href)
-                    ? "bg-accent/10 text-secondary"
-                    : "text-foreground",
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Mobile CTA */}
-          <div className="mt-auto p-6 pt-0">
-            <Button
-              asChild
-              className="bg-accent text-accent-foreground hover:bg-accent/90 w-full"
-              onClick={handleLinkClick}
-            >
-              <Link href="/contact">Enquire Now</Link>
-            </Button>
+    <div className="card-nav-container">
+      <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`}>
+        <div className="card-nav-top">
+          <div
+            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
+            onClick={toggleMenu}
+            role="button"
+            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+            tabIndex={0}
+          >
+            <div className="hamburger-line" />
+            <div className="hamburger-line" />
           </div>
+
+          <div className="logo-container">
+            <Logo size="sm" />
+          </div>
+
+          <Link
+            href="/#enquire-now"
+            className="card-nav-cta-button"
+            onClick={() => {
+              setIsHamburgerOpen(false);
+              setIsExpanded(false);
+            }}
+          >
+            Enquire Now
+          </Link>
         </div>
-      </SheetContent>
-    </Sheet>
+
+        <div className="card-nav-content" aria-hidden={!isExpanded}>
+          {navigationCards.map((card, idx) => (
+            <div
+              key={`${card.label}-${idx}`}
+              className="nav-card"
+              ref={setCardRef(idx)}
+              style={{ backgroundColor: card.bgColor, color: card.textColor }}
+            >
+              <div className="nav-card-label">{card.label}</div>
+              <div className="nav-card-links">
+                {card.links?.map((link, i) => (
+                  <Link
+                    key={`${link.label}-${i}`}
+                    className={`nav-card-link ${isActivePage(link.href) ? 'active' : ''}`}
+                    href={link.href}
+                    aria-label={link.ariaLabel}
+                    onClick={() => {
+                      setIsHamburgerOpen(false);
+                      setIsExpanded(false);
+                    }}
+                  >
+                    <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </nav>
+    </div>
   );
-}
+};
+
+export { MobileNav };
+export default MobileNav;

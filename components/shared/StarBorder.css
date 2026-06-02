@@ -1,0 +1,99 @@
+/* StarBorder component - Pure CSS animated border for Aagaaz CTAs */
+/* Scoped to .star-border-container class following Patch 1 rules */
+
+.star-border-container {
+  display: inline-block;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.star-border-gradient-bottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  opacity: 0.8;
+  bottom: -12px;
+  right: -250%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--aagaaz-gold), transparent 10%);
+  animation: star-movement-bottom 6s linear infinite alternate;
+  z-index: 0;
+}
+
+.star-border-gradient-top {
+  position: absolute;
+  opacity: 0.8;
+  width: 300%;
+  height: 50%;
+  top: -12px;
+  left: -250%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--aagaaz-gold), transparent 10%);
+  animation: star-movement-top 6s linear infinite alternate;
+  z-index: 0;
+}
+
+.star-border-inner-content {
+  position: relative;
+  border: 1px solid var(--aagaaz-gold);
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: var(--text-base);
+  text-align: center;
+  padding: 16px 26px;
+  border-radius: 20px;
+  z-index: 1;
+  transition: all 200ms ease;
+}
+
+.star-border-inner-content:hover {
+  background: var(--charcoal);
+  transform: translateY(-1px);
+}
+
+/* Keyframe animations for gold sweep effect */
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0.3;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0.3;
+  }
+}
+
+/* Reduced motion support - freeze sweep to static border */
+@media (prefers-reduced-motion: reduce) {
+  .star-border-gradient-bottom,
+  .star-border-gradient-top {
+    animation: none;
+    opacity: 0;
+  }
+
+  .star-border-inner-content {
+    border: 2px solid var(--aagaaz-gold);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .star-border-inner-content {
+    padding: 14px 22px;
+    font-size: var(--text-sm);
+  }
+}
