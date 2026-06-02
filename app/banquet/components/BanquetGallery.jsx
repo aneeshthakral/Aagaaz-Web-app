@@ -141,7 +141,7 @@ export function BanquetGallery() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Camera className="h-4 w-4" />
             Gallery
           </div>
@@ -177,8 +177,8 @@ export function BanquetGallery() {
               >
                 {/* Category Header */}
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                    <IconComponent className="h-6 w-6 text-blue-700" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
+                    <IconComponent className="h-6 w-6 text-accent" />
                   </div>
                   <div>
                     <h3 className="font-display text-foreground text-2xl font-semibold">
@@ -231,7 +231,7 @@ export function BanquetGallery() {
 
         {/* Gallery CTA */}
         <motion.div
-          className="mt-16 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 p-8 text-center"
+          className="mt-16 rounded-2xl border border-border bg-gradient-to-r from-surface to-surface-subtle p-8 text-center"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -258,7 +258,7 @@ export function BanquetGallery() {
               href="https://wa.me/916239503191?text=Hi! I'd like to see more photos of Nawaazissh Hall for my celebration."
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground inline-flex items-center justify-center rounded-lg border border-gray-300 px-6 py-3 font-medium transition-colors hover:bg-gray-50"
+              className="text-foreground inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 font-medium transition-colors hover:bg-surface"
               whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
             >

@@ -80,7 +80,7 @@ export function TestimonialsCarousel() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-700">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Star className="h-4 w-4" />
             Guest Stories
           </div>
@@ -108,7 +108,7 @@ export function TestimonialsCarousel() {
             <motion.div
               key={testimonial.id}
               variants={cardVariants}
-              className="relative rounded-2xl border border-gray-100 bg-white p-8 shadow-sm"
+              className="relative rounded-2xl border border-border bg-surface p-8 shadow-sm"
             >
               {/* Quote icon */}
               <Quote className="text-accent/20 absolute top-6 right-6 h-8 w-8" />
@@ -124,7 +124,7 @@ export function TestimonialsCarousel() {
               </blockquote>
 
               {/* Author */}
-              <div className="border-t border-gray-100 pt-4">
+              <div className="border-t border-border pt-4">
                 <div className="font-display text-foreground font-semibold">
                   {testimonial.name}
                 </div>
@@ -141,7 +141,7 @@ export function TestimonialsCarousel() {
 
         {/* Bottom Stats */}
         <motion.div
-          className="mt-16 grid grid-cols-1 gap-8 border-t border-gray-100 pt-16 sm:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-8 border-t border-border pt-16 sm:grid-cols-3"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

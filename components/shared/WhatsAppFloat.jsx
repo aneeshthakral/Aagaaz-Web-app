@@ -30,10 +30,10 @@ export function WhatsAppFloat({
       className={cn(
         "fixed right-6 bottom-6 z-50",
         "flex h-14 w-14 items-center justify-center",
-        "rounded-full bg-green-500 text-white shadow-lg",
+        "rounded-full bg-accent text-accent-foreground shadow-lg",
         "transition-all duration-300 ease-out",
         "hover:scale-110 hover:shadow-xl",
-        "focus-visible:ring-4 focus-visible:ring-green-500/30 focus-visible:outline-none",
+        "focus-visible:ring-4 focus-visible:ring-accent/30 focus-visible:outline-none",
         "animate-pulse hover:animate-none",
         className,
       )}
@@ -46,7 +46,7 @@ export function WhatsAppFloat({
       {/* Pulsing ring animation */}
       <span
         className={cn(
-          "pointer-events-none absolute inset-0 rounded-full bg-green-500/30",
+          "pointer-events-none absolute inset-0 rounded-full bg-accent/30",
           "animate-ping",
         )}
         aria-hidden="true"

@@ -161,12 +161,12 @@ export function BanquetPackages() {
                   <div className="mb-8 text-center">
                     <div
                       className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${
-                        pkg.popular ? "bg-accent/10" : "bg-gray-100"
+                        pkg.popular ? "bg-accent/10" : "bg-surface-subtle"
                       }`}
                     >
                       <IconComponent
                         className={`h-8 w-8 ${
-                          pkg.popular ? "text-accent" : "text-gray-600"
+                          pkg.popular ? "text-accent" : "text-foreground"
                         }`}
                       />
                     </div>
@@ -192,11 +192,11 @@ export function BanquetPackages() {
                   <div className="mb-8 space-y-4">
                     {pkg.features.map((feature, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" />
+                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" />
                         <span
                           className={`text-sm leading-relaxed ${
                             feature.includes("[")
-                              ? "font-medium text-orange-700"
+                              ? "font-medium text-secondary"
                               : "text-muted-foreground"
                           }`}
                         >
@@ -231,7 +231,7 @@ export function BanquetPackages() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mx-auto max-w-2xl rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+          <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-8 shadow-sm">
             <h3 className="font-display text-foreground mb-4 text-xl font-semibold">
               Need a Custom Package?
             </h3>

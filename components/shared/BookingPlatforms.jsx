@@ -11,19 +11,19 @@ const platforms = [
     name: 'Booking.com',
     url: 'https://www.booking.com/searchresults.html?ss=Aagaaz%2C+Ludhiana',
     logo: 'B.com',
-    color: 'bg-[#003580] hover:bg-[#002147] text-white'
+    color: 'border-border bg-surface text-foreground hover:border-accent hover:bg-surface-subtle'
   },
   {
     name: 'MakeMyTrip',
     url: 'https://www.makemytrip.com/hotels/hotel_aagaaz_for_luxury_stay_celebration-details-ludhiana.html',
     logo: 'MMT',
-    color: 'bg-[#FF6B2C] hover:bg-[#E55A25] text-white'
+    color: 'border-border bg-surface text-foreground hover:border-accent hover:bg-surface-subtle'
   },
   {
     name: 'Goibibo',
     url: 'https://www.goibibo.com/hotels/aagaaz-for-luxury-stay-celebration-hotel-in-ludhiana-5495347842795969158/',
     logo: 'Goibibo',
-    color: 'bg-[#EF6614] hover:bg-[#D55512] text-white'
+    color: 'border-border bg-surface text-foreground hover:border-accent hover:bg-surface-subtle'
   }
 ];
 
@@ -45,7 +45,7 @@ export function BookingPlatforms({ className = '', showTitle = true }) {
             asChild
             variant="outline"
             size="sm"
-            className={`${platform.color} border-transparent hover:border-transparent transition-all duration-300 hover:scale-105 hover:shadow-md`}
+            className={`${platform.color} transition-all duration-300 hover:scale-105 hover:shadow-md`}
           >
             <a
               href={platform.url}

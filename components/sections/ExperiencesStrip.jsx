@@ -75,7 +75,7 @@ export function ExperiencesStrip() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-violet-100 px-4 py-2 text-sm font-medium text-violet-700">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Sparkles className="h-4 w-4" />
             Celebrations & Events
           </div>
@@ -108,7 +108,7 @@ export function ExperiencesStrip() {
                 variants={cardVariants}
                 className="group"
               >
-                <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   {/* Image */}
                   <div className="relative overflow-hidden">
                     <PlaceholderImage

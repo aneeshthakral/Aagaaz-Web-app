@@ -28,7 +28,7 @@ export function KittyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Users className="h-4 w-4 text-purple-300" />
+            <Users className="h-4 w-4 text-accent" />
             Ba-Dastoorr & Shafaq Halls
           </motion.div>
 

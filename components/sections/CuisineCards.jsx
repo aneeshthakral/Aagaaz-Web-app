@@ -21,7 +21,7 @@ const cuisines = [
     description: "Fresh ingredients and time-honored techniques bring the warmth of Italy to every handcrafted dish.",
     specialties: ["Fresh Pasta", "Wood-Fired Pizzas", "Creamy Rice Dishes", "Classic Antipasti"],
     icon: "🇮🇹",
-    color: "from-accent/30 to-green-500/10",
+    color: "from-accent/30 to-pearl",
     accentColor: "accent",
     size: "standard"
   },

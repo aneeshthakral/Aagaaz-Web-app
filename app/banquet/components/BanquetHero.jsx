@@ -36,7 +36,7 @@ export function BanquetHero() {
               delay: shouldReduceMotion ? 0 : 0.2,
             }}
           >
-            <Heart className="h-4 w-4 text-rose-300" />
+            <Heart className="h-4 w-4 text-accent" />
             Nawaazissh Banquet Hall
           </motion.div>
 

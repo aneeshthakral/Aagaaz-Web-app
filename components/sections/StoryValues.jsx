@@ -38,7 +38,7 @@ const values = [
     title: "Environmental Consciousness",
     description: "Beautiful beginnings should not come at the cost of our planet. We incorporate sustainable practices while maintaining luxury experiences.",
     icon: "🌱",
-    color: "from-green-500/20 to-green-400/10"
+    color: "from-pearl to-accent/10"
   }
 ]
 

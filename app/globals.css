@@ -58,6 +58,10 @@
 :root {
   /* ===== AAGAAZ DESIGN TOKENS ===== */
 
+  /* CENTRAL FONT FALLBACKS USED BY THE TOKEN LAYER */
+  --font-fraunces: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
+  --font-inter: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+
   /* PREMIUM BRAND COLORS - Refined Gold, White, Black */
   /* Luxurious Gold Palette - warmer and richer */
   --aagaaz-gold: #d4af37;          /* Premium gold - richer and more luxurious */

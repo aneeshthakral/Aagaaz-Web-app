@@ -130,7 +130,7 @@ export function BanquetOfferings() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-rose-100 px-4 py-2 text-sm font-medium text-rose-700">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Layout className="h-4 w-4" />
             What's Included
           </div>
@@ -163,10 +163,10 @@ export function BanquetOfferings() {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="flex gap-4 rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                    className="flex gap-4 rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
                   >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-rose-100">
-                      <IconComponent className="h-6 w-6 text-rose-600" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                      <IconComponent className="h-6 w-6 text-accent" />
                     </div>
 
                     <div className="flex-1">
@@ -220,8 +220,8 @@ export function BanquetOfferings() {
               }}
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-rose-100">
-                  <Clock className="h-6 w-6 text-rose-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <Clock className="h-6 w-6 text-accent" />
                 </div>
                 <div>
                   <div className="font-display text-foreground text-lg font-semibold">

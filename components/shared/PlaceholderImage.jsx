@@ -14,11 +14,11 @@ export function PlaceholderImage({
 }) {
   // Color themes for different content types
   const typeColors = {
-    hotel: "from-amber-100 to-amber-200",
-    food: "from-orange-100 to-orange-200",
-    event: "from-rose-100 to-rose-200",
-    room: "from-blue-100 to-blue-200",
-    default: "from-gray-100 to-gray-200",
+    hotel: "from-pearl to-ivory",
+    food: "from-ivory to-pearl",
+    event: "from-surface to-surface-subtle",
+    room: "from-pearl to-surface",
+    default: "from-surface-subtle to-surface",
   };
 
   const gradientClass = typeColors[type] || typeColors.default;
@@ -44,9 +44,9 @@ export function PlaceholderImage({
       {/* Content indicator */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-white/40">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-background/80 shadow-sm">
             <svg
-              className="h-6 w-6 text-gray-600"
+              className="h-6 w-6 text-foreground"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -59,10 +59,10 @@ export function PlaceholderImage({
               />
             </svg>
           </div>
-          <div className="text-sm font-medium tracking-wider text-gray-600 uppercase">
+          <div className="text-sm font-medium tracking-wider text-foreground uppercase">
             {width} × {height}
           </div>
-          <div className="mt-1 text-xs text-gray-500 capitalize">
+          <div className="mt-1 text-xs text-text-light capitalize">
             {type === "default" ? "Image" : type} Photo
           </div>
         </div>

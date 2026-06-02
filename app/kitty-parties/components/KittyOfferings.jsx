@@ -114,7 +114,7 @@ export function KittyOfferings() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-600">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
             <Coffee className="h-4 w-4" />
             What's Included
           </div>
@@ -148,10 +148,10 @@ export function KittyOfferings() {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="flex gap-4 rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+                    className="flex gap-4 rounded-xl border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md"
                   >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-purple-100">
-                      <IconComponent className="h-6 w-6 text-purple-600" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                      <IconComponent className="h-6 w-6 text-accent" />
                     </div>
 
                     <div className="flex-1">
@@ -202,8 +202,8 @@ export function KittyOfferings() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
-                  <Smile className="h-6 w-6 text-purple-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                  <Smile className="h-6 w-6 text-accent" />
                 </div>
                 <div>
                   <div className="font-display text-foreground text-lg font-semibold">
@@ -240,7 +240,7 @@ export function KittyOfferings() {
             {hallFeatures.map((hall, index) => (
               <motion.div
                 key={index}
-                className="rounded-xl border border-purple-100 bg-purple-50 p-8 text-center"
+                className="rounded-xl border border-border bg-surface-subtle p-8 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -259,13 +259,13 @@ export function KittyOfferings() {
                       key={featureIndex}
                       className="text-muted-foreground flex items-center justify-center gap-2 text-sm"
                     >
-                      <div className="h-1.5 w-1.5 rounded-full bg-purple-600" />
+                      <div className="h-1.5 w-1.5 rounded-full bg-accent" />
                       {feature}
                     </div>
                   ))}
                 </div>
 
-                <div className="inline-block rounded-full bg-white px-3 py-1 text-xs font-medium tracking-wider text-purple-600 uppercase">
+                <div className="inline-block rounded-full bg-surface px-3 py-1 text-xs font-medium tracking-wider text-accent uppercase">
                   {hall.ideal}
                 </div>
               </motion.div>

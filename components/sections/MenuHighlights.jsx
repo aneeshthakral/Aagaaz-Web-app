@@ -211,7 +211,7 @@ export default function MenuHighlights() {
                   <motion.div
                     key={dish.name}
                     className={`
-                      relative flex min-h-44 flex-col rounded-xl border border-border/50 p-6 backdrop-blur-sm transition-all duration-500
+                      relative flex h-full flex-col rounded-xl border border-border/50 p-6 backdrop-blur-sm transition-all duration-500
                       ${dish.featured
                         ? `bg-gradient-to-br from-${category.color}/5 to-${category.color}/10 border-${category.color}/30`
                         : 'bg-surface/60 hover:bg-surface/80'

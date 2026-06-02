@@ -27,7 +27,7 @@ export function ContactActions({
       icon: MessageCircle,
       href: `https://wa.me/${contacts.whatsappNumber}?text=Hello! I'm interested in Aagaaz for an upcoming celebration.`,
       ariaLabel: `Chat on WhatsApp at ${contacts.whatsapp}`,
-      className: 'bg-[#25D366] hover:bg-[#22C55E] text-white border-[#25D366] hover:border-[#22C55E]'
+      className: 'bg-foreground hover:bg-charcoal text-background border-foreground hover:border-charcoal'
     },
     {
       type: 'phone',

@@ -137,8 +137,8 @@ export function KittyPackages() {
               <motion.div
                 key={pkg.id}
                 variants={cardVariants}
-                className={`relative bg-white rounded-2xl border-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
-                  pkg.popular ? 'border-accent shadow-accent/20' : 'border-gray-100'
+                className={`relative bg-surface rounded-2xl border-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+                  pkg.popular ? 'border-accent shadow-accent/20' : 'border-border'
                 }`}
               >
                 {/* Popular Badge */}
@@ -154,10 +154,10 @@ export function KittyPackages() {
                   {/* Header */}
                   <div className="text-center mb-8">
                     <div className={`h-16 w-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
-                      pkg.popular ? 'bg-accent/10' : 'bg-purple-100'
+                      pkg.popular ? 'bg-accent/10' : 'bg-surface-subtle'
                     }`}>
                       <IconComponent className={`h-8 w-8 ${
-                        pkg.popular ? 'text-accent' : 'text-purple-600'
+                        pkg.popular ? 'text-accent' : 'text-foreground'
                       }`} />
                     </div>
 
@@ -184,9 +184,9 @@ export function KittyPackages() {
                   <div className="space-y-4 mb-8">
                     {pkg.features.map((feature, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <Check className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                         <span className={`text-sm leading-relaxed ${
-                          feature.includes('[') ? 'text-orange-600 font-medium' : 'text-muted-foreground'
+                          feature.includes('[') ? 'text-secondary font-medium' : 'text-muted-foreground'
                         }`}>
                           {feature}
                         </span>
@@ -200,7 +200,7 @@ export function KittyPackages() {
                     className={`w-full ${
                       pkg.popular
                         ? 'bg-accent text-accent-foreground hover:bg-accent/90'
-                        : 'bg-purple-600 text-white hover:bg-purple-700'
+                        : 'bg-foreground text-background hover:bg-foreground/90'
                     }`}
                   >
                     <Link href="/#enquire-now">
@@ -233,18 +233,18 @@ export function KittyPackages() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: "Floral Spring", color: "from-pink-100 to-rose-100", emoji: "🌸" },
-              { name: "Bollywood Night", color: "from-purple-100 to-violet-100", emoji: "💃" },
-              { name: "Tea Party Classic", color: "from-green-100 to-emerald-100", emoji: "☕" },
-              { name: "Festive Celebration", color: "from-yellow-100 to-orange-100", emoji: "🎉" },
-              { name: "Elegant Black & Gold", color: "from-gray-100 to-yellow-100", emoji: "✨" },
-              { name: "Garden Party", color: "from-green-100 to-teal-100", emoji: "🌿" },
-              { name: "Vintage Romance", color: "from-pink-100 to-purple-100", emoji: "💕" },
-              { name: "Modern Chic", color: "from-gray-100 to-blue-100", emoji: "🎨" }
+              { name: "Floral Spring", color: "from-surface to-surface-subtle", emoji: "🌸" },
+              { name: "Bollywood Night", color: "from-surface-subtle to-pearl", emoji: "💃" },
+              { name: "Tea Party Classic", color: "from-surface to-pearl", emoji: "☕" },
+              { name: "Festive Celebration", color: "from-pearl to-ivory", emoji: "🎉" },
+              { name: "Elegant Black & Gold", color: "from-surface-subtle to-ivory", emoji: "✨" },
+              { name: "Garden Party", color: "from-pearl to-surface", emoji: "🌿" },
+              { name: "Vintage Romance", color: "from-surface to-ivory", emoji: "💕" },
+              { name: "Modern Chic", color: "from-surface-subtle to-surface", emoji: "🎨" }
             ].map((theme, index) => (
               <motion.div
                 key={index}
-                className={`p-4 rounded-xl bg-gradient-to-br ${theme.color} text-center hover:scale-105 transition-transform cursor-pointer`}
+                className={`rounded-xl border border-border bg-gradient-to-br ${theme.color} p-4 text-center transition-transform hover:scale-105`}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -260,7 +260,7 @@ export function KittyPackages() {
 
           <div className="text-center mt-8">
             <p className="text-sm text-muted-foreground mb-4">
-              <span className="text-orange-600 font-medium">[THEME DETAILS NEEDED]</span> -
+              <span className="text-secondary font-medium">[THEME DETAILS NEEDED]</span> -
               Need specific theme inclusions and decoration details for each package
             </p>
             <Button asChild variant="outline">
