@@ -31,6 +31,9 @@ const guestCounts = [
   "200+"
 ];
 
+// PASTE YOUR REAL WEB3FORMS ACCESS KEY HERE BEFORE GOING LIVE.
+const WEB3FORMS_ACCESS_KEY = "PASTE_YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+
 export function EnhancedCTABand() {
   const shouldReduceMotion = useReducedMotion();
   const [formData, setFormData] = useState({
@@ -43,20 +46,43 @@ export function EnhancedCTABand() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "Aagaaz Website Enquiry",
+        from_name: "Aagaaz Website",
+        botcheck: "",
+        name: formData.name,
+        phone: formData.phone,
+        enquiry_type: formData.enquiryType,
+        guest_count: formData.guestCount,
+        event_date: formData.eventDate,
+        message: formData.message
+      };
 
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send your enquiry right now.");
+      }
+
+      setIsSubmitted(true);
       setFormData({
         name: "",
         phone: "",
@@ -65,7 +91,15 @@ export function EnhancedCTABand() {
         eventDate: "",
         message: ""
       });
-    }, 3000);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your enquiry right now. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -127,6 +161,15 @@ export function EnhancedCTABand() {
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
                   <h3 className="mb-6 text-2xl font-semibold">Get in Touch</h3>
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                      type="text"
+                      name="botcheck"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden"
+                      aria-hidden="true"
+                    />
+
                     {/* Name & Phone */}
                     <div className="grid gap-4 sm:grid-cols-2">
                       <input
@@ -209,6 +252,12 @@ export function EnhancedCTABand() {
                     >
                       {isSubmitting ? "Sending..." : "Send Enquiry"}
                     </Button>
+
+                    {submitError ? (
+                      <p className="text-sm font-medium text-red-300" role="alert">
+                        {submitError}
+                      </p>
+                    ) : null}
                   </form>
                 </div>
               )}

@@ -26,7 +26,7 @@ export default function KittyPartiesPage() {
       <KittyPackages />
 
       {/* Gallery Showcase */}
-      <section className="py-24 bg-background">
+      <section id="gallery" className="py-24 bg-background scroll-mt-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-text mb-4">Kitty Party Gallery</h2>
