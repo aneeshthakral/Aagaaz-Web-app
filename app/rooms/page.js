@@ -1,7 +1,7 @@
 import { createPageMetadata } from "@/lib/seo";
 import { PageLayout } from "@/components/layout";
-import { RoomsEnquiry } from "@/components/shared";
 import { PlaceholderImage } from "@/components/shared";
+import Link from "next/link";
 
 export const metadata = createPageMetadata({
   title: "Guest Rooms and Accommodation in Ludhiana",
@@ -32,18 +32,18 @@ export default function RoomsPage() {
             Experience hospitality at its finest with 44 well-appointed rooms
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#enquiry"
+            <Link
+              href="/#enquire-now"
               className="inline-flex items-center px-8 py-3 bg-accent hover:bg-accent-hover text-accent-foreground font-semibold rounded-md transition-all duration-300 hover:scale-105"
             >
               Check Availability
-            </a>
-            <a
+            </Link>
+            <Link
               href="#rooms"
               className="inline-flex items-center px-8 py-3 border border-white text-white hover:bg-white hover:text-text font-semibold rounded-md transition-all duration-300"
             >
               View Rooms
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -159,13 +159,6 @@ export default function RoomsPage() {
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Enquiry Section */}
-      <section id="enquiry" className="py-24 bg-surface-subtle">
-        <div className="container mx-auto px-6">
-          <RoomsEnquiry />
         </div>
       </section>
     </PageLayout>

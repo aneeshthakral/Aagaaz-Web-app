@@ -5,12 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Aagaaz Typography System */
-  --font-display: "Fraunces", "Times New Roman", serif;
-  --font-sans: "Inter", "Geist Sans", system-ui, sans-serif;
-  --font-mono:
-    "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+  /* Aagaaz Typography System - Final Font Pairing Locked */
+  /* PRIMARY: Fraunces (luxury serif) for headings/display */
+  /* SECONDARY: Inter (premium sans) for body/UI */
+  --font-display: var(--font-fraunces), "Fraunces", "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
   --font-heading: var(--font-display);
+  --font-body: var(--font-sans);
 
   /* Color System */
   --color-background: var(--background);
@@ -56,19 +58,28 @@
 :root {
   /* ===== AAGAAZ DESIGN TOKENS ===== */
 
-  /* Brand Colors - Extracted from Aagaaz logo */
-  --aagaaz-gold: #c9a961;
-  --aagaaz-gold-light: #e8d4a0;
-  --aagaaz-gold-dark: #a08840;
+  /* PREMIUM BRAND COLORS - Refined Gold, White, Black */
+  /* Luxurious Gold Palette - warmer and richer */
+  --aagaaz-gold: #d4af37;          /* Premium gold - richer and more luxurious */
+  --aagaaz-gold-light: #f4d03f;    /* Bright gold highlight */
+  --aagaaz-gold-dark: #b8960c;     /* Deep gold for depth */
+  --aagaaz-gold-soft: #f7dc6f;     /* Soft gold for subtle accents */
 
-  /* Base Palette */
-  --midnight: #1a1a1a;
-  --charcoal: #2d2d2d;
-  --cream: #faf8f5;
-  --pearl: #f5f3f0;
-  --wine: #722f37;
-  --wine-light: #8b3a42;
-  --amber: #d4915d;
+  /* PREMIUM BASE PALETTE - Sophisticated neutrals */
+  /* Rich Blacks - deeper and more sophisticated */
+  --midnight: #0f0f0f;             /* Deep premium black */
+  --charcoal: #1c1c1c;             /* Rich charcoal */
+  --slate: #2a2a2a;                /* Sophisticated gray-black */
+
+  /* Warm Whites - luxurious and inviting */
+  --cream: #fffef7;                /* Premium warm white */
+  --pearl: #faf9f4;                /* Soft pearl white */
+  --ivory: #f8f7f0;                /* Rich ivory tone */
+
+  /* Accent Colors - refined and elegant */
+  --wine: #8b1538;                 /* Deep wine - more luxurious */
+  --wine-light: #a64d79;           /* Elegant wine highlight */
+  --amber: #cd853f;                /* Warm amber accent */
 
   /* Typography Scale */
   --text-display-2xl: clamp(3.5rem, 8vw, 7rem);
@@ -81,6 +92,23 @@
   --text-lg: 1.125rem;
   --text-base: 1rem;
   --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  /* Font Weight Scale */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* PREMIUM GRADIENTS & EFFECTS */
+  /* Luxurious gold gradients */
+  --gradient-gold: linear-gradient(135deg, var(--aagaaz-gold-light) 0%, var(--aagaaz-gold) 50%, var(--aagaaz-gold-dark) 100%);
+  --gradient-gold-subtle: linear-gradient(135deg, var(--aagaaz-gold-soft) 0%, var(--aagaaz-gold) 100%);
+
+  /* Premium shadow system */
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.25);
+  --shadow-luxury: 0 8px 32px rgba(15, 15, 15, 0.15);
+  --shadow-soft: 0 2px 12px rgba(15, 15, 15, 0.08);
 
   /* Spacing Scale (4px base) */
   --space-1: 0.25rem;
@@ -113,22 +141,22 @@
 
   /* ===== SHADCN SYSTEM (Customized for Aagaaz) ===== */
 
-  /* Map Aagaaz brand to shadcn semantic tokens */
+  /* PREMIUM SEMANTIC TOKENS - Refined mappings */
   --background: var(--cream);
   --foreground: var(--charcoal);
-  --card: #ffffff;
+  --card: var(--pearl);
   --card-foreground: var(--charcoal);
-  --popover: #ffffff;
+  --popover: var(--ivory);
   --popover-foreground: var(--charcoal);
   --primary: var(--aagaaz-gold);
   --primary-foreground: var(--midnight);
   --secondary: var(--wine);
-  --secondary-foreground: #ffffff;
+  --secondary-foreground: var(--cream);
   --muted: var(--pearl);
-  --muted-foreground: #666666;
+  --muted-foreground: var(--slate);
   --accent: var(--aagaaz-gold);
   --accent-foreground: var(--midnight);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: #dc2626;
   --border: #e5e1dc;
   --input: var(--pearl);
   --ring: var(--aagaaz-gold);
@@ -201,16 +229,65 @@
     line-height: 1.6;
   }
 
-  /* Typography Hierarchy */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  /* LOCKED TYPOGRAPHY HIERARCHY - Fraunces + Inter */
+  /* All headings use luxury Fraunces serif */
+  h1, h2, h3, h4, h5, h6,
+  .font-display {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* All body text uses clean Inter sans-serif */
+  body, p, span, div, button, input, textarea,
+  .font-sans {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.6;
+  }
+
+  /* Ensure display text is always Fraunces */
+  .text-display-2xl, .text-display-xl, .text-display-lg {
+    font-family: var(--font-display) !important;
+  }
+
+  /* PREMIUM UTILITY CLASSES */
+  /* Luxurious gold text with subtle shimmer effect */
+  .text-gold-premium {
+    background: var(--gradient-gold);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+  }
+
+  /* Premium shadow effects */
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Premium gradient backgrounds */
+  .bg-gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .bg-gold-subtle {
+    background: var(--gradient-gold-subtle);
+  }
+
+  /* React Bits Style Animations */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) skewX(-12deg);
+    }
+    100% {
+      transform: translateX(200%) skewX(-12deg);
+    }
   }
 
   /* Motion Accessibility */

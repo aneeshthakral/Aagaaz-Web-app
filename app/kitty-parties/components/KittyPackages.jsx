@@ -8,7 +8,7 @@ import Link from "next/link"
 
 /**
  * Kitty Packages - Kitty party package tiers and themes
- * PLACEHOLDER: Need real package details, pricing, and themed inclusions from client
+ * PLACEHOLDER: Need real package details and themed inclusions from client
  */
 
 const packages = [
@@ -16,7 +16,7 @@ const packages = [
     id: "classic",
     name: "Classic Kitty",
     subtitle: "Traditional ladies' gathering",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     capacity: "15-20 ladies",
     icon: Coffee,
     popular: false,
@@ -35,7 +35,7 @@ const packages = [
     id: "themed",
     name: "Themed Celebration",
     subtitle: "Most popular for special occasions",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     capacity: "20-30 ladies",
     icon: Sparkles,
     popular: true,
@@ -55,7 +55,7 @@ const packages = [
     id: "deluxe",
     name: "Deluxe Experience",
     subtitle: "Ultimate ladies' celebration",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     capacity: "30-40 ladies",
     icon: Heart,
     popular: false,
@@ -171,19 +171,13 @@ export function KittyPackages() {
 
                     <div className="mb-2">
                       <div className="text-3xl font-display font-bold text-foreground">
-                        {pkg.price}
+                        {pkg.availability}
                       </div>
                       <div className="text-sm text-accent font-medium">
                         {pkg.capacity}
                       </div>
                     </div>
 
-                    {/* Placeholder Notice */}
-                    {pkg.price.includes('[') && (
-                      <div className="text-xs text-orange-600 bg-orange-50 px-3 py-1 rounded-full mt-2">
-                        Pricing details needed
-                      </div>
-                    )}
                   </div>
 
                   {/* Features */}
@@ -267,7 +261,7 @@ export function KittyPackages() {
           <div className="text-center mt-8">
             <p className="text-sm text-muted-foreground mb-4">
               <span className="text-orange-600 font-medium">[THEME DETAILS NEEDED]</span> -
-              Need specific theme inclusions, pricing, and decoration details for each package
+              Need specific theme inclusions and decoration details for each package
             </p>
             <Button asChild variant="outline">
               <Link href="#enquiry">

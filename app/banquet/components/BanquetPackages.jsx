@@ -8,7 +8,7 @@ import Link from "next/link";
 
 /**
  * Banquet Packages - Wedding and celebration package tiers
- * PLACEHOLDER: Need real package details, pricing, and inclusions from client
+ * PLACEHOLDER: Need real package details and inclusions from client
  */
 
 const packages = [
@@ -16,7 +16,7 @@ const packages = [
     id: "classic",
     name: "Classic Celebration",
     subtitle: "Perfect for intimate gatherings",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     guests: "50-80 guests",
     icon: Heart,
     popular: false,
@@ -35,7 +35,7 @@ const packages = [
     id: "premium",
     name: "Premium Wedding",
     subtitle: "Most popular for traditional weddings",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     guests: "100-140 guests",
     icon: Crown,
     popular: true,
@@ -56,7 +56,7 @@ const packages = [
     id: "royal",
     name: "Royal Reception",
     subtitle: "Ultimate luxury experience",
-    price: "[PRICING NEEDED]", // Placeholder - needs real pricing
+    availability: "Details shared on enquiry",
     guests: "150-180 guests",
     icon: Star,
     popular: false,
@@ -179,19 +179,13 @@ export function BanquetPackages() {
 
                     <div className="mb-2">
                       <div className="font-display text-foreground text-3xl font-bold">
-                        {pkg.price}
+                        {pkg.availability}
                       </div>
                       <div className="text-secondary text-sm font-medium">
                         {pkg.guests}
                       </div>
                     </div>
 
-                    {/* Placeholder Notice */}
-                    {pkg.price.includes("[") && (
-                      <div className="mt-2 rounded-full bg-orange-50 px-3 py-1 text-xs text-orange-700">
-                        Pricing details needed
-                      </div>
-                    )}
                   </div>
 
                   {/* Features */}
@@ -243,7 +237,7 @@ export function BanquetPackages() {
             </h3>
             <p className="text-muted-foreground mb-6">
               Every celebration is unique. Let us create a personalized package
-              that perfectly matches your vision and budget.
+              that perfectly matches your vision and requirements.
             </p>
             <Button asChild variant="outline">
               <Link href="#enquiry">Request Custom Quote</Link>

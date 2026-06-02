@@ -199,7 +199,7 @@ export default function DiningHero() {
             duration: 3,
             ease: "easeInOut"
           }}
-          className="flex flex-col items-center gap-3 text-cream/60"
+          className="flex flex-col items-center gap-3 text-cream/90"
         >
           <span className="text-xs uppercase tracking-widest font-medium">Discover</span>
           <div className="w-px h-8 bg-gradient-to-b from-accent to-transparent" />

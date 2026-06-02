@@ -7,8 +7,8 @@ import {
   DiningGlimpse,
   ExperiencesStrip,
   TestimonialsCarousel,
-  CTABand,
 } from "@/components/sections";
+import { EnhancedCTABand } from "@/components/sections/EnhancedCTABand";
 
 export const metadata = createPageMetadata({
   title: "Banquet Halls, Rooms, Dining, and Celebrations in Ludhiana",
@@ -44,8 +44,8 @@ export default function Home() {
       {/* Social Proof - Testimonials and stats */}
       <TestimonialsCarousel />
 
-      {/* Closing CTA - Final call to action */}
-      <CTABand />
+      {/* Enhanced Enquire Now - Form with contact details and map */}
+      <EnhancedCTABand />
     </PageLayout>
   );
 }

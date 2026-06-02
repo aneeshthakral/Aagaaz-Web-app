@@ -101,20 +101,7 @@ export function BanquetEnquiry({ className = '' }) {
         { value: 'none', label: 'No Decoration' }
       ]
     },
-    {
-      name: 'budgetRange',
-      label: 'Budget Range',
-      type: 'select',
-      placeholder: 'Select budget range (optional)',
-      required: false,
-      options: [
-        { value: 'under-2l', label: 'Under ₹2 Lakhs' },
-        { value: '2l-5l', label: '₹2-5 Lakhs' },
-        { value: '5l-10l', label: '₹5-10 Lakhs' },
-        { value: '10l-plus', label: '₹10+ Lakhs' },
-        { value: 'discuss', label: 'Prefer to Discuss' }
-      ]
-    },
+    // Budget field removed - focusing on experience rather than pricing
     {
       name: 'message',
       label: 'Special Requirements',

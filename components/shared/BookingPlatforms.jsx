@@ -62,7 +62,7 @@ export function BookingPlatforms({ className = '', showTitle = true }) {
 
       <div className="text-center mt-3">
         <p className="text-xs text-text-light">
-          Compare prices and availability across platforms
+          Compare availability across platforms
         </p>
       </div>
     </div>

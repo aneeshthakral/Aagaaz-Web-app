@@ -29,7 +29,7 @@ const offerings = [
     icon: Heart,
     href: "/banquet",
     cta: "Plan Your Wedding",
-    accent: "from-rose-500 to-pink-600",
+    accent: "from-accent to-accent/80",
   },
   {
     id: "kitty",
@@ -47,7 +47,7 @@ const offerings = [
     icon: Users,
     href: "/kitty-parties",
     cta: "Book Your Gathering",
-    accent: "from-purple-500 to-violet-600",
+    accent: "from-wine to-wine/80",
   },
   {
     id: "rooms",
@@ -65,7 +65,7 @@ const offerings = [
     icon: Bed,
     href: "/rooms",
     cta: "Check Availability",
-    accent: "from-blue-500 to-cyan-600",
+    accent: "from-secondary to-secondary/80",
   },
 ];
 
@@ -112,10 +112,18 @@ export function OfferingsGrid() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="bg-accent/10 text-secondary mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium">
+          <motion.div
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-accent/30 bg-gradient-to-r from-accent/10 to-wine/10 px-6 py-3 text-sm font-medium text-secondary backdrop-blur-sm"
+          >
+            <span className={`w-2 h-2 bg-accent rounded-full ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
             <Star className="h-4 w-4" />
             Our Celebrations
-          </div>
+            <span className={`w-2 h-2 bg-wine rounded-full ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
+          </motion.div>
 
           <h2 className="font-display text-foreground mb-6 text-4xl font-semibold lg:text-5xl">
             Where every celebration
@@ -145,71 +153,183 @@ export function OfferingsGrid() {
                 variants={cardVariants}
                 className="group"
               >
-                <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                <div className="overflow-hidden rounded-2xl border border-border/50 bg-gradient-to-br from-surface via-surface to-surface-subtle shadow-xl backdrop-blur-sm transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:border-accent/40 relative group-hover:bg-gradient-to-br group-hover:from-surface group-hover:via-surface group-hover:to-accent/5">
+                  {/* Shimmer Effect */}
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-accent/20 to-transparent transform skew-x-12 group-hover:translate-x-full transition-transform duration-1000" />
+
+                  {/* Border Glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/20 via-wine/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm -z-10" />
+
                   {/* Image */}
                   <div className="relative overflow-hidden">
                     <PlaceholderImage
                       {...offering.image}
-                      className="w-full transform transition-transform duration-700 group-hover:scale-105"
+                      className="w-full transform transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
                     />
 
                     {/* Gradient overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t ${offering.accent} opacity-0 transition-opacity duration-500 group-hover:opacity-20`}
-                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${offering.accent} opacity-0 transition-opacity duration-700 group-hover:opacity-30`} />
 
-                    {/* Icon */}
-                    <div className="absolute top-6 left-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/90 shadow-lg backdrop-blur-sm">
-                        <IconComponent className="text-accent h-6 w-6" />
-                      </div>
+                    {/* Floating particles effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                      {[...Array(6)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-1 h-1 bg-accent rounded-full"
+                          style={{
+                            left: `${20 + i * 15}%`,
+                            top: `${30 + i * 10}%`,
+                          }}
+                          animate={shouldReduceMotion ? {} : {
+                            y: [-10, -20, -10],
+                            opacity: [0.3, 0.8, 0.3],
+                            scale: [0.8, 1.2, 0.8]
+                          }}
+                          transition={{
+                            duration: 2 + i * 0.3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+                      ))}
                     </div>
+
+                    {/* Icon with enhanced styling */}
+                    <motion.div
+                      className="absolute top-6 left-6"
+                      whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-surface/95 to-accent/10 shadow-xl backdrop-blur-sm border border-accent/20 group-hover:border-accent/40 transition-all duration-300">
+                        <IconComponent className="text-accent h-7 w-7" />
+                      </div>
+                    </motion.div>
+
+                    {/* Luxury badge */}
+                    <motion.div
+                      className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500"
+                      initial={{ scale: 0.8, rotate: -5 }}
+                      whileHover={{ scale: 1, rotate: 0 }}
+                    >
+                      <div className="bg-gradient-to-r from-accent to-wine text-surface px-3 py-1 rounded-full text-xs font-medium tracking-wider">
+                        LUXURY
+                      </div>
+                    </motion.div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-8">
-                    <div className="mb-4">
-                      <div className="text-muted-foreground mb-2 text-sm font-medium tracking-wider uppercase">
+                  <div className="p-8 relative">
+                    {/* Subtle background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-accent/5 to-wine/5 rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                    <div className="mb-6 relative z-10">
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 0.8, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-text-light mb-3 text-sm font-medium tracking-[0.2em] uppercase flex items-center gap-2"
+                      >
+                        <span className="w-2 h-px bg-accent" />
                         {offering.subtitle}
-                      </div>
-                      <h3 className="font-display text-foreground mb-3 text-2xl font-semibold">
+                      </motion.div>
+
+                      {/* BlurText style title reveal */}
+                      <motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="font-display text-text mb-4 text-3xl font-semibold leading-tight group-hover:text-accent transition-colors duration-500"
+                        style={{ fontFamily: 'var(--font-fraunces)' }}
+                      >
                         {offering.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
+                      </motion.h3>
+
+                      <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-text-light leading-relaxed text-base"
+                      >
                         {offering.description}
-                      </p>
+                      </motion.p>
                     </div>
 
                     {/* Features */}
-                    <div className="mb-6">
-                      <ul className="space-y-2">
+                    <div className="mb-8 relative z-10">
+                      <motion.h4
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        className="text-secondary text-xs uppercase tracking-wider font-semibold mb-4 flex items-center gap-2"
+                      >
+                        <motion.span
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: 0.8 }}
+                          className="w-4 h-px bg-accent origin-left"
+                        />
+                        Features
+                      </motion.h4>
+                      <ul className="space-y-3">
                         {offering.features.map((feature, index) => (
-                          <li
+                          <motion.li
                             key={index}
-                            className="flex items-center gap-3 text-sm"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                            className="flex items-center gap-4 text-sm group/item"
                           >
-                            <div className="bg-accent h-1.5 w-1.5 flex-shrink-0 rounded-full" />
-                            <span className="text-muted-foreground">
+                            <motion.div
+                              whileHover={shouldReduceMotion ? {} : { scale: 1.3, rotate: 180 }}
+                              transition={{ duration: 0.3 }}
+                              className="bg-gradient-to-br from-accent to-wine h-2 w-2 flex-shrink-0 rounded-full shadow-sm"
+                            />
+                            <span className="text-text-light group-hover/item:text-text transition-colors duration-300">
                               {feature}
                             </span>
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
                     </div>
 
                     {/* CTA */}
-                    <Button
-                      asChild
-                      className="group bg-accent text-accent-foreground hover:bg-accent/90 w-full"
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 1 }}
+                      className="relative z-10"
                     >
-                      <Link
-                        href={offering.href}
-                        className="flex items-center justify-center gap-2"
+                      <Button
+                        asChild
+                        className="group bg-gradient-to-r from-accent to-accent/90 hover:from-accent hover:to-wine text-accent-foreground w-full relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                       >
-                        {offering.cta}
-                        <ArrowRight className="h-4 w-4 transform transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </Button>
+                        <Link
+                          href={offering.href}
+                          className="flex items-center justify-center gap-2 relative z-10"
+                        >
+                          {/* Shimmer effect */}
+                          <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent transform skew-x-12 group-hover:translate-x-full transition-transform duration-1000" />
+
+                          {offering.cta}
+                          <motion.div
+                            whileHover={shouldReduceMotion ? {} : { x: 4 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ArrowRight className="h-4 w-4 transform transition-transform" />
+                          </motion.div>
+                        </Link>
+                      </Button>
+
+                      {/* Button glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-wine/20 rounded-lg blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>

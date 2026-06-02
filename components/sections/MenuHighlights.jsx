@@ -4,98 +4,109 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Container from '@/components/layout/Container'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { BlurText, ScrollReveal, LuxuryHover, StaggerContainer, CountUp } from '@/components/animations/MotionUtils'
+import { BlurText, ScrollReveal, LuxuryHover, StaggerContainer } from '@/components/animations/MotionUtils'
 
 const menuHighlights = [
   {
-    category: "Signature Indian",
-    tagline: "Heritage Flavors",
+    category: "Appetisers",
+    tagline: "Perfect Beginnings",
     color: "wine",
     dishes: [
       {
-        name: "Royal Paneer Makhani",
-        description: "Cottage cheese in rich tomato and cashew gravy, finished with cream",
-        price: "485",
+        name: "Paneer Multani Tikka",
+        description: "Tandoor-roasted paneer stuffed with cashews, raisins and almonds. We picked this because the stuffed preparation shows real kitchen craft.",
         featured: true
       },
       {
-        name: "Tandoori Mixed Grill",
-        description: "Chef's selection of marinated meats and vegetables from the tandoor",
-        price: "695"
+        name: "Paneer Papdi",
+        description: "Our chef's special cottage cheese roasted with herbs and spices. The signature dish every chef takes pride in.",
+        featured: false
       },
       {
-        name: "Hyderabadi Biryani",
-        description: "Aromatic basmati rice layered with tender meat and saffron",
-        price: "625"
+        name: "Mushroom Tandoori Tikka",
+        description: "Butter mushrooms marinated in tandoori masala and clay-oven cooked. Vegetarian tandoor done right."
+      },
+      {
+        name: "Chicken Banjara",
+        description: "Mild-spiced chicken tikka with egg coating, tandoor-finished. The egg coating keeps every bite juicy."
+      },
+      {
+        name: "Chicken Kali Mirch Tikka",
+        description: "Curd-marinated chicken with cashews, cream and rare spices. Black pepper heat balanced by the creamy marinade."
+      },
+      {
+        name: "Grilled Fish with Butter Sauce",
+        description: "Fish fillets topped with buttery lemon sauce. Simple preparation lets the fish quality shine through."
       }
     ]
   },
   {
-    category: "Italian Favorites",
-    tagline: "Artisan Traditions",
+    category: "Fresh Salads",
+    tagline: "Garden Fresh",
     color: "accent",
     dishes: [
       {
-        name: "Truffle Mushroom Risotto",
-        description: "Creamy arborio rice with wild mushrooms and truffle oil",
-        price: "545",
+        name: "Cheese Pineapple Salad",
+        description: "Fresh cheese and sweet pineapple in seasonal greens. The combination gives you sweet, savory and fresh in every forkful.",
         featured: true
-      },
-      {
-        name: "Wood-Fired Margherita",
-        description: "Classic pizza with San Marzano tomatoes, fresh mozzarella, and basil",
-        price: "425"
-      },
-      {
-        name: "Linguine alle Vongole",
-        description: "Fresh clams with white wine, garlic, and Italian parsley",
-        price: "595"
       }
     ]
   },
   {
-    category: "Oriental Selection",
-    tagline: "Wok Masters",
+    category: "Main Course",
+    tagline: "Heart of the Meal",
     color: "wine",
     dishes: [
       {
-        name: "Kung Pao Chicken",
-        description: "Wok-tossed with peanuts, chilies, and Sichuan peppercorns",
-        price: "465"
-      },
-      {
-        name: "Thai Green Curry",
-        description: "Aromatic coconut curry with lemongrass and Thai basil",
-        price: "485"
-      },
-      {
-        name: "Crispy Peking Duck",
-        description: "Traditional preparation with pancakes, scallions, and hoisin sauce",
-        price: "795",
+        name: "Paneer Lababdar",
+        description: "Authentic Punjabi cottage cheese in tomato-cashew gravy. The luscious combination has fed families for generations.",
         featured: true
+      },
+      {
+        name: "Shyam Savera Kofta",
+        description: "Mughlai cottage cheese and vegetable koftas in rich, aromatic curry. Two-tone koftas that look like dawn breaking.",
+        featured: false
+      },
+      {
+        name: "Mutton Rogan Josh",
+        description: "Kashmir delight with warm spices and slow-cooking method. The long, gentle cooking makes the meat surrender completely."
+      },
+      {
+        name: "Rara Chicken",
+        description: "Unique chicken recipe combining pieces with mutton keema. Double the protein, double the flavor depth."
+      },
+      {
+        name: "Butter Chicken",
+        description: "The famous dish in buttery gravy with traditional Punjabi spices. When done right, this is what brings people back."
       }
     ]
   },
   {
-    category: "Continental Classics",
-    tagline: "European Elegance",
+    category: "Sweet Endings & Breads",
+    tagline: "Perfect Finishes",
     color: "accent",
     dishes: [
       {
-        name: "Grilled Atlantic Salmon",
-        description: "Pan-seared with herbs, served with roasted vegetables",
-        price: "725"
-      },
-      {
-        name: "Beef Tenderloin Medallions",
-        description: "With red wine reduction and garlic mashed potatoes",
-        price: "895",
+        name: "Sizzling Brownie",
+        description: "Hot brownie with chocolate sauce and vanilla ice cream on a sizzling plate. The drama makes the dessert taste even better.",
         featured: true
       },
       {
-        name: "Ratatouille Tart",
-        description: "Seasonal vegetables in puff pastry with herb oil",
-        price: "385"
+        name: "Vanilla Affogato",
+        description: "Vanilla ice cream drowned in hot espresso. Italian simplicity that turns ice cream into an event."
+      },
+      {
+        name: "Fried Ice Cream",
+        description: "Deep-fried breaded ice cream scoop. The hot-cold contrast hits different every single time."
+      },
+      {
+        name: "Aagaaz Special Kulcha",
+        description: "Our signature thin, crisp whole wheat kulcha from the tandoor. Every house needs a bread that guests remember.",
+        featured: true
+      },
+      {
+        name: "Chur-Chur Naan",
+        description: "Flaky, layered naan that breaks apart in your hands. The texture makes every bite of curry stick perfectly."
       }
     ]
   }
@@ -200,7 +211,7 @@ export default function MenuHighlights() {
                   <motion.div
                     key={dish.name}
                     className={`
-                      relative p-6 rounded-xl border border-border/50 backdrop-blur-sm transition-all duration-500
+                      relative flex min-h-44 flex-col rounded-xl border border-border/50 p-6 backdrop-blur-sm transition-all duration-500
                       ${dish.featured
                         ? `bg-gradient-to-br from-${category.color}/5 to-${category.color}/10 border-${category.color}/30`
                         : 'bg-surface/60 hover:bg-surface/80'
@@ -226,45 +237,26 @@ export default function MenuHighlights() {
                       </motion.div>
                     )}
 
-                    <div className="flex justify-between items-start gap-6">
-                      <div className="flex-1 min-w-0">
-                        <motion.h4
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: categoryIndex * 0.2 + dishIndex * 0.1 + 0.8 }}
-                          className="font-display text-xl text-text mb-2 leading-tight group-hover:text-accent transition-colors duration-300"
-                        >
-                          {dish.name}
-                        </motion.h4>
+                    <div className={`w-full ${dish.featured ? 'pr-6 sm:pr-8' : ''}`}>
+                      <motion.h4
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: categoryIndex * 0.2 + dishIndex * 0.1 + 0.8 }}
+                        className="mb-2 text-xl leading-tight text-text transition-colors duration-300 group-hover:text-accent"
+                      >
+                        {dish.name}
+                      </motion.h4>
 
-                        <motion.p
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: categoryIndex * 0.2 + dishIndex * 0.1 + 1 }}
-                          className="text-text-light leading-relaxed text-sm"
-                        >
-                          {dish.description}
-                        </motion.p>
-                      </div>
-
-                      <div className="flex-shrink-0">
-                        <motion.div
-                          className={`text-right`}
-                          initial={{ opacity: 0, x: 20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: categoryIndex * 0.2 + dishIndex * 0.1 + 1.2 }}
-                        >
-                          <div className="text-xs text-text-light mb-1">₹</div>
-                          <CountUp
-                            end={parseInt(dish.price)}
-                            duration={1.5}
-                            className={`font-display text-2xl font-semibold text-${category.color}`}
-                          />
-                        </motion.div>
-                      </div>
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: categoryIndex * 0.2 + dishIndex * 0.1 + 1 }}
+                        className="text-sm leading-relaxed text-text-light"
+                      >
+                        {dish.description}
+                      </motion.p>
                     </div>
 
                     {/* Hover decoration */}
@@ -295,7 +287,7 @@ export default function MenuHighlights() {
                 delay={50}
               />
               <p className="text-text-light mb-6 max-w-md mx-auto">
-                Prices subject to change. Please ask your server about seasonal specialties
+                Menu details coming soon. Please ask your server about seasonal specialties
                 and chef's recommendations.
               </p>
             </motion.div>

@@ -24,13 +24,7 @@ const guestCounts = [
   "300+"
 ]
 
-const budgetRanges = [
-  "Under ₹50,000",
-  "₹50,000 - ₹1,00,000",
-  "₹1,00,000 - ₹2,00,000",
-  "₹2,00,000 - ₹5,00,000",
-  "₹5,00,000+"
-]
+// Budget field removed - focusing on experience rather than pricing
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -40,7 +34,6 @@ export default function ContactForm() {
     enquiryType: '',
     eventDate: '',
     guestCount: '',
-    budget: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -83,7 +76,6 @@ export default function ContactForm() {
         enquiryType: '',
         eventDate: '',
         guestCount: '',
-        budget: '',
         message: ''
       })
     }, 3000)
@@ -282,26 +274,7 @@ export default function ContactForm() {
                 </select>
               </div>
 
-              {/* Budget Range */}
-              <div className="space-y-2">
-                <label htmlFor="budget" className="text-text font-medium">
-                  Budget Range
-                </label>
-                <select
-                  id="budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={(e) => handleSelectChange('budget', e.target.value)}
-                  className={fieldClassName}
-                >
-                  <option value="">Select budget</option>
-                  {budgetRanges.map((range) => (
-                    <option key={range} value={range}>
-                      {range}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {/* Budget field removed - focusing on experience rather than pricing */}
             </div>
 
             {/* Message */}

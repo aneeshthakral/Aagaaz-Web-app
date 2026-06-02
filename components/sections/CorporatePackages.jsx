@@ -9,8 +9,8 @@ const packages = [
   {
     name: "Essential",
     description: "Perfect for meetings and small gatherings",
-    price: "Starting ₹2,500",
-    duration: "per person",
+    availability: "Details on enquiry",
+    duration: "Best for compact events",
     features: [
       "Professional venue setup",
       "Basic AV equipment included",
@@ -25,8 +25,8 @@ const packages = [
   {
     name: "Professional",
     description: "Comprehensive solution for corporate events",
-    price: "Starting ₹4,200",
-    duration: "per person",
+    availability: "Details on enquiry",
+    duration: "Best for mid-size events",
     features: [
       "Premium venue decoration",
       "Advanced AV & presentation tools",
@@ -43,8 +43,8 @@ const packages = [
   {
     name: "Executive",
     description: "Luxury experience for distinguished gatherings",
-    price: "Starting ₹7,500",
-    duration: "per person",
+    availability: "Details on enquiry",
+    duration: "Best for premium events",
     features: [
       "Bespoke event design",
       "Premium staging & lighting",
@@ -158,7 +158,7 @@ export default function CorporatePackages() {
 
                 <div className="mb-6">
                   <span className="text-3xl font-display text-accent">
-                    {pkg.price}
+                    {pkg.availability}
                   </span>
                   <span className="text-text-light ml-1">
                     {pkg.duration}
@@ -202,7 +202,7 @@ export default function CorporatePackages() {
           </h3>
           <p className="text-text-light mb-6">
             Every event is unique. We create custom packages tailored to your specific
-            requirements, timeline, and budget. Let us design the perfect experience for you.
+            requirements and timeline. Let us design the perfect experience for you.
           </p>
           <Button asChild variant="outline" size="lg" className="border-secondary text-secondary hover:bg-secondary/10">
             <Link href="/contact">Discuss Custom Package</Link>

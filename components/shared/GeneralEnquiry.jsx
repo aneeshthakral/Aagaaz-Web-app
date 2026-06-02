@@ -44,7 +44,7 @@ export function GeneralEnquiry({ className = '' }) {
         { value: 'dining', label: 'Restaurant & Dining' },
         { value: 'corporate', label: 'Corporate Events' },
         { value: 'catering', label: 'Catering Services' },
-        { value: 'pricing', label: 'Pricing Information' },
+        { value: 'details', label: 'Package Details' },
         { value: 'availability', label: 'Check Availability' },
         { value: 'feedback', label: 'Feedback' },
         { value: 'complaint', label: 'Complaint' },

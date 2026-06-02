@@ -33,7 +33,7 @@ const galleryData = {
   'Dining & Food': [
     { id: 17, title: 'Fessta Restaurant', category: 'Dining & Food', aspectRatio: 'aspect-[3/2]' },
     { id: 18, title: 'Signature Plating', category: 'Dining & Food', aspectRatio: 'aspect-square' },
-    { id: 19, title: 'Tandoori Specialties', category: 'Dining & Food', aspectRatio: 'aspect-[4/5]' },
+    { id: 19, title: 'Traditional Indian Dishes', category: 'Dining & Food', aspectRatio: 'aspect-[4/5]' },
     { id: 20, title: 'Italian Corner', category: 'Dining & Food', aspectRatio: 'aspect-[3/2]' },
     { id: 21, title: 'Chef at Work', category: 'Dining & Food', aspectRatio: 'aspect-[4/3]' },
     { id: 22, title: 'Dessert Presentation', category: 'Dining & Food', aspectRatio: 'aspect-[3/4]' }

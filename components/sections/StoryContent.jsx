@@ -5,24 +5,24 @@ import Container from '@/components/layout/Container'
 
 const storyMilestones = [
   {
+    year: "1968",
+    title: "Industrial Roots",
+    description: "The Ahuja family founded Rajnish Industries, beginning five decades of business excellence in manufacturing and global exports."
+  },
+  {
     year: "2012",
-    title: "Foundation",
-    description: "Aagaaz opened its doors with a vision to create meaningful celebrations that honor both tradition and modern elegance."
+    title: "Aagaaz Foundation",
+    description: "Drawing from generations of business trust, the family opened Aagaaz with a vision to create meaningful celebrations."
   },
   {
     year: "2015",
-    title: "Expansion",
-    description: "Added Fessta Restaurant, bringing world-class dining to complement our hospitality offerings."
-  },
-  {
-    year: "2018",
-    title: "Recognition",
-    description: "Named among Ludhiana's premier celebration venues, trusted by families and corporations alike."
+    title: "Culinary Excellence",
+    description: "Added Fessta Restaurant, bringing the same quality standards that made RIPL globally trusted to hospitality dining."
   },
   {
     year: "2024",
-    title: "Evolution",
-    description: "Continuously innovating while staying true to our core belief: every beginning deserves beauty."
+    title: "Legacy Continues",
+    description: "Today, Aagaaz stands as testament to what five decades of community trust and business excellence can build."
   }
 ]
 
@@ -71,16 +71,22 @@ export default function StoryContent() {
 
           <div className="prose prose-xl text-text-light leading-relaxed mx-auto">
             <p>
-              At Aagaaz, we understand that celebrations are not just events — they are
-              the punctuation marks of life, the moments when time pauses to let joy unfold.
-              Whether it's the nervous excitement of a wedding proposal, the proud achievement
-              of a corporate milestone, or the simple pleasure of friends gathering for kitty,
-              every celebration carries the weight of its meaning.
+              Trust takes decades to build. The Ahuja family learned this through fifty-five years
+              of business, from a small manufacturing unit in 1968 to serving customers across
+              fifty countries today. That same commitment to excellence guides every wedding,
+              every kitty party, every corporate celebration at Aagaaz.
             </p>
             <p>
-              We don't just provide a venue; we curate experiences. Our spaces become canvases
-              where your stories are painted in laughter, decorated with connections, and
-              illuminated by the warmth of shared moments.
+              When families choose Aagaaz for their most important moments, they choose more
+              than a venue. They choose the standing that comes from five decades of keeping
+              promises, the quality that earned international recognition for RIPL, and the
+              trust that makes Ludhiana families feel confident in our hands.
+            </p>
+            <p>
+              We understand that celebrations are the punctuation marks of life. Whether it's
+              the nervous excitement of a wedding proposal or friends gathering for kitty,
+              every moment matters. That's why we bring the same precision that serves
+              customers in fifty countries to every detail of your celebration.
             </p>
           </div>
         </motion.div>
@@ -156,30 +162,32 @@ export default function StoryContent() {
             </span>
 
             <h3 className="font-display text-3xl text-text mb-6">
-              Rooted in Punjab,
+              Built on five decades of
               <br />
-              <span className="text-accent">Inspired by the World</span>
+              <span className="text-accent">community trust</span>
             </h3>
 
             <div className="space-y-4 text-text-light leading-relaxed">
               <p>
-                Located on Pakhowal Road in the heart of Ludhiana, Aagaaz sits at the
-                crossroads of Punjab's industrial energy and cultural richness. Our position
-                allows us to serve not just the city, but families and businesses from
-                across the region who seek a venue that understands both tradition and progress.
+                Located on Pakhowal Road in the heart of Ludhiana, Aagaaz grows from roots
+                that run deep in this city's business community. When the Ahuja family launched
+                Rajnish Industries in 1968, they made a promise to deliver excellence. That
+                promise built relationships across fifty countries and earned recognition from
+                the Confederation of Indian Industries.
               </p>
 
               <p>
-                The design of our spaces reflects this duality — classical elegance that
-                honors our heritage, paired with contemporary amenities that serve modern
-                needs. From our banquet halls that have witnessed countless wedding vows
-                to our corporate spaces that have celebrated business achievements,
-                every corner of Aagaaz tells a story of new beginnings.
+                The same principles that made RIPL globally trusted now shape every celebration
+                at Aagaaz. Families and businesses choose us because they know the name means
+                something in Ludhiana. Our banquet halls have witnessed countless wedding vows,
+                our corporate spaces have celebrated business achievements, and behind every
+                event stands a family known for keeping their word.
               </p>
 
               <p>
-                We are more than a venue; we are custodians of moments, architects of
-                celebration, and humble servants to the beautiful art of bringing people together.
+                This is more than a venue. This is where five decades of business excellence
+                meets the beautiful art of bringing people together. When you celebrate at Aagaaz,
+                you celebrate with partners who understand that trust is earned one promise at a time.
               </p>
             </div>
           </div>

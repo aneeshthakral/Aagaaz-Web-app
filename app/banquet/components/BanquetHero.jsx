@@ -95,7 +95,7 @@ export function BanquetHero() {
                 <Users className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">50-180 Guests</div>
-              <div className="text-sm text-white/70">Flexible seating</div>
+              <div className="text-sm text-white/90">Flexible seating</div>
             </div>
 
             <div className="flex flex-col items-center text-center">
@@ -103,7 +103,7 @@ export function BanquetHero() {
                 <Calendar className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">Year-Round</div>
-              <div className="text-sm text-white/70">Availability</div>
+              <div className="text-sm text-white/90">Availability</div>
             </div>
 
             <div className="flex flex-col items-center text-center">
@@ -111,7 +111,7 @@ export function BanquetHero() {
                 <Star className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">Full Service</div>
-              <div className="text-sm text-white/70">Planning included</div>
+              <div className="text-sm text-white/90">Planning included</div>
             </div>
           </motion.div>
 
@@ -159,7 +159,7 @@ export function BanquetHero() {
               delay: shouldReduceMotion ? 0 : 1,
             }}
           >
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white/80">
               ✨ Trusted by 200+ couples for their special day
             </p>
           </motion.div>

@@ -70,7 +70,7 @@ export function DiningGlimpse() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700">
+          <div className="mb-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-wine/20 bg-wine/10 px-4 py-2 text-sm font-medium text-wine backdrop-blur-sm">
             <ChefHat className="h-4 w-4" />
             Fessta Restaurant
           </div>
@@ -95,11 +95,11 @@ export function DiningGlimpse() {
             transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           >
             {/* Cuisines Grid */}
-            <div className="mb-8 grid grid-cols-2 gap-6">
+            <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {cuisines.map((cuisine, index) => (
                 <motion.div
                   key={cuisine.name}
-                  className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+                  className="rounded-xl border border-border/30 bg-surface/80 backdrop-blur-sm p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-accent/40 group"
                   initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -108,12 +108,14 @@ export function DiningGlimpse() {
                     delay: shouldReduceMotion ? 0 : index * 0.1,
                   }}
                 >
-                  <h4 className="font-display text-foreground mb-2 font-semibold">
-                    {cuisine.name}
-                  </h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {cuisine.description}
-                  </p>
+                  <div className="text-center">
+                    <h4 className="font-display text-text mb-3 font-semibold text-lg group-hover:text-accent transition-colors duration-300">
+                      {cuisine.name}
+                    </h4>
+                    <p className="text-text-light text-sm leading-relaxed">
+                      {cuisine.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -122,7 +124,7 @@ export function DiningGlimpse() {
               <p className="text-muted-foreground leading-relaxed">
                 Whether you're hosting an intimate kitty party or feeding
                 wedding guests, Fessta Restaurant ensures every meal is
-                memorable. Our à la carte menu features carefully crafted dishes
+                memorable. Our dining offerings feature carefully crafted dishes
                 from four culinary traditions.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -166,7 +168,7 @@ export function DiningGlimpse() {
 
               {/* Floating badge */}
               <motion.div
-                className="absolute -top-4 -left-4 rounded-xl border bg-white p-4 shadow-lg"
+                className="absolute left-4 top-4 rounded-xl border border-accent/20 bg-surface/90 p-3 shadow-xl backdrop-blur-sm sm:-left-4 sm:-top-4 sm:p-4"
                 initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -176,17 +178,17 @@ export function DiningGlimpse() {
                 }}
               >
                 <div className="text-center">
-                  <div className="font-display text-foreground text-2xl font-semibold">
+                  <div className="font-display text-text text-2xl font-semibold">
                     4
                   </div>
-                  <div className="text-muted-foreground text-xs tracking-wider uppercase">
+                  <div className="text-text-light text-xs tracking-wider uppercase">
                     Cuisines
                   </div>
                 </div>
               </motion.div>
 
               {/* Background decoration */}
-              <div className="absolute -right-4 -bottom-4 -z-10 h-32 w-32 rounded-full bg-orange-100" />
+              <div className="absolute -right-4 -bottom-4 -z-10 hidden h-32 w-32 rounded-full bg-wine/10 sm:block" />
             </div>
           </motion.div>
         </div>
@@ -206,15 +208,15 @@ export function DiningGlimpse() {
               <motion.div
                 key={highlight.title}
                 variants={itemVariants}
-                className="text-center"
+                className="text-center px-4"
               >
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100">
-                  <IconComponent className="h-8 w-8 text-orange-700" />
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-wine/15 border border-accent/20">
+                  <IconComponent className="h-8 w-8 text-secondary" />
                 </div>
-                <h4 className="font-display text-foreground mb-2 font-semibold">
+                <h4 className="font-display text-text mb-3 font-semibold text-lg">
                   {highlight.title}
                 </h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-text-light text-sm leading-relaxed max-w-xs mx-auto">
                   {highlight.description}
                 </p>
               </motion.div>

@@ -4,7 +4,6 @@ import { BanquetHero } from "./components/BanquetHero";
 import { BanquetOfferings } from "./components/BanquetOfferings";
 import { BanquetPackages } from "./components/BanquetPackages";
 import { BanquetGallery } from "./components/BanquetGallery";
-import { BanquetEnquiry } from "@/components/shared";
 
 export const metadata = createPageMetadata({
   title: "Nawaazissh Banquet Hall for Weddings and Events",
@@ -28,13 +27,6 @@ export default function BanquetPage() {
 
       {/* Gallery Showcase */}
       <BanquetGallery />
-
-      {/* Enquiry Block */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <BanquetEnquiry />
-        </div>
-      </section>
     </PageLayout>
   );
 }

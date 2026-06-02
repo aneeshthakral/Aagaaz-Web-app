@@ -157,19 +157,75 @@ export default function StoryValues() {
               Aagaaz is as beautiful as the story it begins.
             </p>
 
-            <div className="flex items-center justify-center gap-8 text-sm text-text-light">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-accent rounded-full" />
-                <span>Founded 2012</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-accent rounded-full" />
-                <span>1000+ Celebrations</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-accent rounded-full" />
-                <span>Ludhiana Heritage</span>
-              </div>
+            {/* Enhanced Statistics Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              {[
+                { number: "2012", label: "Founded", icon: "🏛️" },
+                { number: "1000+", label: "Celebrations", icon: "🎉" },
+                { number: "Heritage", label: "Ludhiana", icon: "🏅" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={shouldReduceMotion ? {} : {
+                    y: -4,
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px rgba(201, 169, 97, 0.15)"
+                  }}
+                  className="group relative bg-gradient-to-br from-surface to-surface-subtle border border-accent/20 rounded-xl p-4 text-center hover:border-accent/40 transition-all duration-300 backdrop-blur-sm"
+                >
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-accent/10 to-transparent transform skew-x-12 group-hover:translate-x-full transition-transform duration-1000 rounded-xl" />
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.3, type: "spring", bounce: 0.4 }}
+                      className="text-2xl mb-2"
+                    >
+                      {stat.icon}
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
+                      className="font-display text-xl font-semibold text-accent mb-1 group-hover:text-wine transition-colors duration-300"
+                    >
+                      {stat.number}
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.7 }}
+                      className="text-sm text-text-light uppercase tracking-wider group-hover:text-text transition-colors duration-300"
+                    >
+                      {stat.label}
+                    </motion.div>
+
+                    {/* Accent line */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 + 0.9 }}
+                      className="w-8 h-px bg-gradient-to-r from-accent to-wine mx-auto mt-3 origin-center"
+                    />
+                  </div>
+
+                  {/* Background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-wine/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>

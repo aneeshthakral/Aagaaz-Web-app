@@ -3,7 +3,6 @@ import { PageLayout } from "@/components/layout";
 import { KittyHero } from "./components/KittyHero";
 import { KittyOfferings } from "./components/KittyOfferings";
 import { KittyPackages } from "./components/KittyPackages";
-import { KittyEnquiry } from "@/components/shared";
 import { PlaceholderImage } from "@/components/shared";
 
 export const metadata = createPageMetadata({
@@ -44,13 +43,6 @@ export default function KittyPartiesPage() {
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Enquiry Block */}
-      <section className="py-24 bg-surface-subtle">
-        <div className="container mx-auto px-6">
-          <KittyEnquiry />
         </div>
       </section>
     </PageLayout>

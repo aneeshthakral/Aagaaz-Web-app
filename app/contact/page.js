@@ -3,7 +3,6 @@ import PageLayout from '@/components/layout/PageLayout'
 import ContactHero from '@/components/sections/ContactHero'
 import ContactInfo from '@/components/sections/ContactInfo'
 import ContactMap from '@/components/sections/ContactMap'
-import { GeneralEnquiry } from '@/components/shared'
 
 export const metadata = createPageMetadata({
   title: 'Contact Us - Plan Your Celebration at Aagaaz',
@@ -18,11 +17,6 @@ export default function ContactPage() {
       <ContactHero />
       <ContactInfo />
       <ContactMap />
-      <section className="py-24 bg-surface-subtle">
-        <div className="container mx-auto px-6">
-          <GeneralEnquiry />
-        </div>
-      </section>
     </PageLayout>
   )
 }

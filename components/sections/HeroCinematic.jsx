@@ -136,7 +136,7 @@ export function HeroCinematic() {
               <div className="font-display text-accent text-3xl font-semibold">
                 44
               </div>
-              <div className="text-sm tracking-wider text-white/70 uppercase">
+              <div className="text-sm tracking-wider text-white/90 uppercase">
                 Luxury Rooms
               </div>
             </div>
@@ -144,7 +144,7 @@ export function HeroCinematic() {
               <div className="font-display text-accent text-3xl font-semibold">
                 180
               </div>
-              <div className="text-sm tracking-wider text-white/70 uppercase">
+              <div className="text-sm tracking-wider text-white/90 uppercase">
                 Banquet Capacity
               </div>
             </div>
@@ -152,7 +152,7 @@ export function HeroCinematic() {
               <div className="font-display text-accent text-3xl font-semibold">
                 3
               </div>
-              <div className="text-sm tracking-wider text-white/70 uppercase">
+              <div className="text-sm tracking-wider text-white/90 uppercase">
                 Event Halls
               </div>
             </div>
@@ -187,7 +187,7 @@ export function HeroCinematic() {
         >
           <Link
             href="#offerings"
-            className="flex flex-col items-center gap-2 text-white/60 transition-colors hover:text-white/80"
+            className="flex flex-col items-center gap-2 text-white/90 transition-colors hover:text-white"
           >
             <span className="text-xs tracking-wider uppercase">Discover</span>
             <ChevronDown className="h-5 w-5" />

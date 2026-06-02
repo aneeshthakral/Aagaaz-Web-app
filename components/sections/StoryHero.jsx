@@ -22,7 +22,7 @@ export default function StoryHero() {
   }
 
   return (
-    <section className="relative min-h-[100vh] flex items-center bg-gradient-to-br from-background via-surface-subtle to-background overflow-hidden">
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-background via-surface-subtle to-background py-24 pt-32 lg:py-32">
       {/* Enhanced Decorative Elements with Motion */}
       <div className="absolute inset-0">
         <ImageDrift drift={12} duration={35} direction="random">
@@ -125,7 +125,7 @@ export default function StoryHero() {
           </div>
 
           {/* Two-Column Layout with Enhanced Content */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
             {/* Left Column - Text Content */}
             <ScrollReveal direction="left" delay={0.4} threshold={0.1}>
               <div className="space-y-10">
@@ -214,7 +214,7 @@ export default function StoryHero() {
                       }}
                     />
 
-                    <div className="relative z-10 h-full flex flex-col items-center justify-center p-12 text-center">
+                    <div className="relative z-10 flex h-full flex-col items-center justify-center p-8 text-center sm:p-12">
                       <motion.div
                         animate={shouldReduceMotion ? {} : {
                           scale: [1, 1.1, 1],
@@ -284,7 +284,7 @@ export default function StoryHero() {
 
       {/* Enhanced Scroll Indicator */}
       <motion.div
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+        className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: shouldReduceMotion ? 0 : 2.5, duration: shouldReduceMotion ? 0.3 : 0.8 }}

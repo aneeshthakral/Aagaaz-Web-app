@@ -12,7 +12,7 @@ const galleryItems = [
     aspectRatio: "aspect-square"
   },
   {
-    title: "Tandoori Specialties",
+    title: "Traditional Indian Dishes",
     category: "Indian Cuisine",
     aspectRatio: "aspect-[4/5]"
   },
@@ -113,16 +113,17 @@ export default function DiningGallery() {
                 ${item.aspectRatio}
                 ${index === 0 ? 'col-span-2 row-span-2' : ''}
                 ${index === 2 ? 'md:col-span-2' : ''}
+                min-h-40 sm:min-h-48
                 bg-gradient-to-br from-accent/20 to-wine/20
                 rounded-lg overflow-hidden group
                 border border-border hover:border-accent/30 transition-colors
               `}
             >
-              <div className="w-full h-full flex flex-col justify-end p-6 bg-gradient-to-t from-midnight/70 to-transparent">
-                <span className="text-xs text-cream/80 font-medium mb-1">
+              <div className="flex h-full w-full flex-col justify-end bg-gradient-to-t from-midnight/70 to-transparent p-4 sm:p-6">
+                <span className="mb-1 text-xs font-medium text-cream/80">
                   {item.category}
                 </span>
-                <h3 className="text-surface font-semibold group-hover:text-accent transition-colors">
+                <h3 className="text-sm font-semibold leading-tight text-surface transition-colors group-hover:text-accent sm:text-base">
                   {item.title}
                 </h3>
               </div>

@@ -1,0 +1,19 @@
+
+> aagaaz-web-app@0.1.0 dev
+> next dev --port 3001
+
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.100.42:3001
+
+ ✓ Starting...
+ ✓ Ready in 1360ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1127ms (1877 modules)
+ HEAD / 200 in 1524ms
+ ○ Compiling /banquet ...
+ ✓ Compiled /banquet in 522ms (1918 modules)
+ HEAD /banquet 200 in 881ms
+ ✓ Compiled /contact in 223ms (1923 modules)
+ HEAD /contact 200 in 433ms
+[?25h

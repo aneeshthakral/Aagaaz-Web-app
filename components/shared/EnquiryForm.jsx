@@ -80,19 +80,16 @@ export function EnquiryForm({
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    const nextValue = field === 'phone' ? formatPhoneNumber(value) : value;
+
+    setFormData(prev => ({ ...prev, [field]: nextValue }));
 
     // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: null }));
-    }
-
-    // Format phone numbers as user types
-    if (field === 'phone') {
-      const formatted = formatPhoneNumber(value);
-      setFormData(prev => ({ ...prev, [field]: formatted }));
     }
   };
 
@@ -100,6 +97,7 @@ export function EnquiryForm({
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setSubmitError('');
 
     // Validate form
     const { errors: validationErrors, isValid } = validateForm(formData, validations);
@@ -111,22 +109,17 @@ export function EnquiryForm({
     }
 
     try {
-      // Simulate API call - replace with actual form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // For now, always succeed - replace with actual API integration
-      const success = Math.random() > 0.1; // 90% success rate for demo
-
-      if (success) {
-        setSubmitStatus('success');
-        setFormData({});
-        setErrors({});
-      } else {
-        setSubmitStatus('error');
-      }
+      await Promise.resolve(onSubmit(formData));
+      setSubmitStatus('success');
+      setFormData({});
+      setErrors({});
     } catch (error) {
-      console.error('Form submission error:', error);
       setSubmitStatus('error');
+      setSubmitError(
+        error instanceof Error && error.message
+          ? error.message
+          : messages.error.network
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -232,9 +225,13 @@ export function EnquiryForm({
                   {field.type === 'textarea' ? (
                     <Textarea
                       id={field.name}
+                      name={field.name}
                       placeholder={field.placeholder}
                       value={formData[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      required={field.required}
+                      aria-invalid={Boolean(error)}
+                      aria-describedby={error ? `${field.name}-error` : undefined}
                       className={`min-h-[100px] resize-none transition-all duration-300 ${
                         error
                           ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
@@ -244,8 +241,12 @@ export function EnquiryForm({
                   ) : field.type === 'select' ? (
                     <select
                       id={field.name}
+                      name={field.name}
                       value={formData[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      required={field.required}
+                      aria-invalid={Boolean(error)}
+                      aria-describedby={error ? `${field.name}-error` : undefined}
                       className={`w-full px-3 py-2 border rounded-md bg-background text-text transition-all duration-300 ${
                         error
                           ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
@@ -262,10 +263,14 @@ export function EnquiryForm({
                   ) : (
                     <Input
                       id={field.name}
+                      name={field.name}
                       type={field.type || 'text'}
                       placeholder={field.placeholder}
                       value={formData[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
+                      required={field.required}
+                      aria-invalid={Boolean(error)}
+                      aria-describedby={error ? `${field.name}-error` : undefined}
                       className={`transition-all duration-300 ${
                         error
                           ? 'border-red-300 focus:border-red-500 focus:ring-red-500/20'
@@ -280,6 +285,7 @@ export function EnquiryForm({
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
+                        id={`${field.name}-error`}
                         className="flex items-center gap-2 text-red-600 text-sm"
                       >
                         <AlertCircle className="h-4 w-4" />
@@ -329,7 +335,7 @@ export function EnquiryForm({
                   <div className="flex items-center gap-2 text-red-700">
                     <AlertCircle className="h-4 w-4" />
                     <span className="text-sm">
-                      {messages.error.network}
+                      {submitError || messages.error.network}
                     </span>
                   </div>
                 </motion.div>

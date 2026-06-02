@@ -79,7 +79,7 @@ export function KittyHero() {
                 <Users className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">Two Halls</div>
-              <div className="text-sm text-white/70">Ba-Dastoorr & Shafaq</div>
+              <div className="text-sm text-white/90">Ba-Dastoorr & Shafaq</div>
             </div>
 
             <div className="flex flex-col items-center text-center">
@@ -87,7 +87,7 @@ export function KittyHero() {
                 <Sparkles className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">Themed Decor</div>
-              <div className="text-sm text-white/70">Custom themes</div>
+              <div className="text-sm text-white/90">Custom themes</div>
             </div>
 
             <div className="flex flex-col items-center text-center">
@@ -95,7 +95,7 @@ export function KittyHero() {
                 <Coffee className="text-accent h-6 w-6" />
               </div>
               <div className="font-semibold text-white">Complete Service</div>
-              <div className="text-sm text-white/70">Food & arrangements</div>
+              <div className="text-sm text-white/90">Food & arrangements</div>
             </div>
           </motion.div>
 
@@ -137,7 +137,7 @@ export function KittyHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
           >
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white/80">
               🌸 Hosting memorable kitty parties since 2020
             </p>
           </motion.div>

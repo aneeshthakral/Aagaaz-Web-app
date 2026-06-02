@@ -6,6 +6,8 @@ export { DiningGlimpse } from "./DiningGlimpse";
 export { ExperiencesStrip } from "./ExperiencesStrip";
 export { TestimonialsCarousel } from "./TestimonialsCarousel";
 export { CTABand } from "./CTABand";
+export { EnhancedCTABand } from "./EnhancedCTABand";
+export { FamilyLeadership } from "./FamilyLeadership";
 
 // Phase 4 Supporting Pages
 export { default as DiningHero } from "./DiningHero";

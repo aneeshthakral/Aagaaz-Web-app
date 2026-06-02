@@ -151,7 +151,7 @@ export function CTABand() {
               delay: shouldReduceMotion ? 0 : 0.6,
             }}
           >
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-white/80">
               Join 500+ families who chose Aagaaz for their special moments
             </p>
           </motion.div>

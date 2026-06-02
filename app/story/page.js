@@ -2,6 +2,7 @@ import { createPageMetadata } from '@/lib/seo'
 import PageLayout from '@/components/layout/PageLayout'
 import StoryHero from '@/components/sections/StoryHero'
 import StoryContent from '@/components/sections/StoryContent'
+import { FamilyLeadership } from '@/components/sections/FamilyLeadership'
 import StoryValues from '@/components/sections/StoryValues'
 import CTABand from '@/components/sections/CTABand'
 
@@ -17,6 +18,7 @@ export default function StoryPage() {
     <PageLayout>
       <StoryHero />
       <StoryContent />
+      <FamilyLeadership />
       <StoryValues />
       <CTABand />
     </PageLayout>

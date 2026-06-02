@@ -47,7 +47,7 @@ export default function TermsPage() {
                 </h2>
                 <p>
                   Submitting an enquiry does not confirm a booking. Dates,
-                  pricing, capacities, menus, and final arrangements are subject
+                  capacities, menus, and final arrangements are subject
                   to direct confirmation with Aagaaz.
                 </p>
               </section>

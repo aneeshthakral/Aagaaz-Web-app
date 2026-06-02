@@ -9,7 +9,7 @@ const cuisines = [
     name: "Indian",
     tagline: "Heritage & Spice",
     description: "Rich traditions and aromatic spices create authentic flavors that celebrate India's diverse culinary heritage.",
-    specialties: ["Tandoor Specialties", "Regional Curries", "Traditional Breads", "Classic Biryanis"],
+    specialties: ["Grilled Specialties", "Regional Curries", "Traditional Breads", "Aromatic Rice Dishes"],
     icon: "🇮🇳",
     color: "from-amber/30 to-wine/20",
     accentColor: "wine",
@@ -19,7 +19,7 @@ const cuisines = [
     name: "Italian",
     tagline: "Passion & Tradition",
     description: "Fresh ingredients and time-honored techniques bring the warmth of Italy to every handcrafted dish.",
-    specialties: ["Fresh Pasta", "Wood-Fired Pizzas", "Authentic Risottos", "Classic Antipasti"],
+    specialties: ["Fresh Pasta", "Wood-Fired Pizzas", "Creamy Rice Dishes", "Classic Antipasti"],
     icon: "🇮🇹",
     color: "from-accent/30 to-green-500/10",
     accentColor: "accent",
@@ -56,11 +56,11 @@ export default function CuisineCards() {
         {/* Enhanced Header with Blur Text */}
         <div className="text-center mb-20 relative">
           {/* Floating decorative elements */}
-          <div className="absolute top-0 left-1/4 w-2 h-16 bg-accent/20 rotate-12 blur-sm" />
-          <div className="absolute -top-8 right-1/3 w-1 h-12 bg-wine/30 -rotate-12 blur-sm" />
+          <div className="absolute top-0 left-1/4 hidden h-16 w-2 rotate-12 bg-accent/20 blur-sm md:block" />
+          <div className="absolute -top-8 right-1/3 hidden h-12 w-1 -rotate-12 bg-wine/30 blur-sm md:block" />
 
           <ScrollReveal direction="up" delay={0.2} threshold={0.1}>
-            <span className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-accent/10 to-wine/10 border border-accent/30 rounded-full text-secondary text-sm font-medium backdrop-blur-sm mb-6">
+            <span className="mb-6 inline-flex flex-wrap items-center justify-center gap-3 rounded-full border border-accent/30 bg-gradient-to-r from-accent/10 to-wine/10 px-6 py-3 text-sm font-medium text-secondary backdrop-blur-sm">
               <span className={`w-2 h-2 bg-accent rounded-full ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
               Global Flavors
               <span className={`w-2 h-2 bg-wine rounded-full ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
@@ -93,7 +93,7 @@ export default function CuisineCards() {
           staggerDelay={0.15}
           direction="up"
           threshold={0.1}
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {cuisines.map((cuisine, index) => (
             <LuxuryHover
@@ -114,8 +114,8 @@ export default function CuisineCards() {
                 className={`
                   relative overflow-hidden rounded-2xl bg-gradient-to-br ${cuisine.color}
                   border border-border/50 backdrop-blur-sm
-                  ${cuisine.size === 'large' ? 'min-h-[400px] p-8' : 'min-h-[300px] p-6'}
-                  group-hover:border-accent/40 transition-all duration-700
+                  ${cuisine.size === 'large' ? 'min-h-[420px] p-6 sm:min-h-[450px] sm:p-8' : 'min-h-[340px] p-5 sm:min-h-[380px] sm:p-6'}
+                  group-hover:border-accent/40 transition-all duration-700 flex
                   before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.1),transparent_70%)]
                   after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-accent/5 after:to-wine/5
                 `}
@@ -141,13 +141,13 @@ export default function CuisineCards() {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="absolute top-6 right-6 w-16 h-16 bg-gradient-to-br from-accent/30 to-wine/30 rounded-full blur-xl"
+                  className="absolute top-6 right-6 hidden h-16 w-16 rounded-full bg-gradient-to-br from-accent/30 to-wine/30 blur-xl md:block"
                 />
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col">
+                <div className="relative z-10 h-full flex flex-col w-full">
                   {/* Icon & Tagline with enhanced hover */}
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <motion.span
                       className="text-6xl filter drop-shadow-lg"
                       whileHover={shouldReduceMotion ? {} : {
@@ -164,7 +164,7 @@ export default function CuisineCards() {
                       whileInView={{ opacity: 0.7, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.5, duration: 1 }}
-                      className={`text-xs uppercase tracking-widest font-bold text-${cuisine.accentColor}`}
+                      className={`max-w-[12rem] text-left text-xs font-bold uppercase leading-relaxed tracking-widest text-${cuisine.accentColor} sm:text-right`}
                     >
                       {cuisine.tagline}
                     </motion.span>
@@ -184,30 +184,29 @@ export default function CuisineCards() {
                   {/* Description with scroll reveal */}
                   <ScrollReveal direction="up" delay={index * 0.1} threshold={0.9}>
                     <p className={`
-                      text-text-light leading-relaxed mb-6 flex-grow
-                      ${cuisine.size === 'large' ? 'text-lg' : 'text-base'}
+                      text-text-light leading-relaxed mb-8 flex-grow
+                      ${cuisine.size === 'large' ? 'text-lg max-w-md' : 'text-base'}
                     `}>
                       {cuisine.description}
                     </p>
                   </ScrollReveal>
 
                   {/* Specialties with staggered reveals */}
-                  <div className="space-y-3">
+                  <div className="space-y-4 mt-auto">
                     <motion.h4
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 + 0.7, duration: 0.6 }}
                       className={`
-                        font-semibold text-${cuisine.accentColor} text-sm
-                        uppercase tracking-wider flex items-center gap-2
+                        flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-${cuisine.accentColor}
                       `}
                     >
                       <motion.span
-                        animate={shouldReduceMotion ? {} : { width: ["0%", "100%"] }}
+                        animate={shouldReduceMotion ? {} : { scaleX: [0, 1] }}
                         transition={{ delay: index * 0.1 + 1, duration: 1.2 }}
-                        className={`h-px bg-${cuisine.accentColor}`}
-                        style={{ width: "16px" }}
+                        className={`h-px flex-shrink-0 origin-left bg-${cuisine.accentColor}`}
+                        style={{ width: "20px" }}
                       />
                       Specialties
                     </motion.h4>
@@ -224,19 +223,19 @@ export default function CuisineCards() {
                       {cuisine.specialties.map((specialty, i) => (
                         <motion.div
                           key={specialty}
-                          className="flex items-center group/item"
+                          className="flex items-start group/item"
                           whileHover={shouldReduceMotion ? {} : { x: 4 }}
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
                           <motion.span
-                            className={`w-2 h-2 bg-${cuisine.accentColor} rounded-full mr-3 flex-shrink-0`}
+                            className={`mr-3 mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-${cuisine.accentColor}`}
                             whileHover={shouldReduceMotion ? {} : {
                               scale: 1.5,
                               boxShadow: `0 0 10px var(--${cuisine.accentColor})`
                             }}
                             transition={{ duration: 0.2 }}
                           />
-                          <span className="text-sm text-text-light group-hover/item:text-text transition-colors duration-300">
+                          <span className="text-sm leading-snug text-text-light transition-colors duration-300 group-hover/item:text-text">
                             {specialty}
                           </span>
                         </motion.div>
@@ -246,7 +245,7 @@ export default function CuisineCards() {
 
                   {/* Enhanced hover indicator */}
                   <motion.div
-                    className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500"
+                    className="absolute bottom-6 right-6 hidden opacity-0 transition-all duration-500 group-hover:opacity-100 lg:block"
                     initial={shouldReduceMotion ? false : { scale: 0.8, rotate: -10 }}
                     whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
